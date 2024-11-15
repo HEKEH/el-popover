@@ -1,0 +1,51 @@
+{
+  "name": "el-popover",
+  "version": "0.0.0",
+  "description": "A popover component extracted from element-plus",
+  "keywords": [
+    "web",
+    "vue",
+    "element-plus"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HEKEH/el-popover"
+  },
+  "license": "MIT",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
+    }
+  },
+  "scripts": {
+    "dev": "vue-tsc --declaration --noEmit && vite build --watch",
+    "build": "vue-tsc --declaration --noEmit && vite build",
+    "lint": "eslint",
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "@vue/eslint-config-typescript": "^14.1.3",
+    "@vue/tsconfig": "^0.6.0",
+    "vue-tsc": "^2.1.10"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "not ie 11"
+  ],
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "dependencies": {}
+}
