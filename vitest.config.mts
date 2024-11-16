@@ -2,6 +2,12 @@ import { defineConfig } from 'vitest/config';
 import Vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
 import VueMacros from 'unplugin-vue-macros/vite';
+import { resolve } from 'path';
+import type { AliasOptions } from 'vite';
+
+const alias: AliasOptions = {
+  '@el-popover': resolve(__dirname, 'packages/'),
+};
 
 export default defineConfig({
   plugins: [
@@ -29,5 +35,8 @@ export default defineConfig({
       reporter: ['text', 'json-summary', 'json'],
       exclude: [],
     },
+  },
+  resolve: {
+    alias,
   },
 });
