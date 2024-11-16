@@ -2,7 +2,7 @@
   "name": "el-popover-workspace",
   "private": true,
   "description": "A popover component extracted from element-plus",
-  "packageManager": "^pnpm@8.0.0",
+  "packageManager": "pnpm@9.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/HEKEH/el-popover"
