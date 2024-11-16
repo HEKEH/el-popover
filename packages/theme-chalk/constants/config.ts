@@ -1,11 +1,6 @@
-import { getVariablesFromScss } from '@el-popover/utils/scss';
-import path from 'path';
+import { getVariablesFromScss } from '../../utils/scss';
 
-const srcPath = path.resolve(__dirname, '../styles');
-
-const config = getVariablesFromScss('mixins/config.scss', {
-  loadPaths: [srcPath],
-}) as {
+export type ThemeConfig = {
   namespace: string;
   'common-separator': string;
   'element-separator': string;
@@ -13,4 +8,11 @@ const config = getVariablesFromScss('mixins/config.scss', {
   'state-prefix': string;
 };
 
-export default config;
+// Get the root path without using Node.js APIs
+const rootPath = new URL('../styles', import.meta.url).pathname;
+
+const themeConfig = getVariablesFromScss('mixins/config.scss', {
+  loadPaths: [rootPath],
+}) as ThemeConfig;
+
+export default themeConfig;

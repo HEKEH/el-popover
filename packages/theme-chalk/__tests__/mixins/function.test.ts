@@ -1,6 +1,6 @@
 import { debugSassString } from '../utils';
 import { describe, expect, it } from 'vitest';
-import config from '../../constants/config';
+import themeConfig from '../../constants/config';
 
 describe('mixins/function', () => {
   describe('selectorToString', () => {
@@ -68,17 +68,17 @@ describe('mixins/function', () => {
       {
         name: 'block only',
         args: ['button'],
-        expected: `${config.namespace}-button`,
+        expected: `${themeConfig.namespace}-button`,
       },
       {
         name: 'block with element',
         args: ['button', 'inner'],
-        expected: `${config.namespace}-button__inner`,
+        expected: `${themeConfig.namespace}-button__inner`,
       },
       {
         name: 'block with element and modifier',
         args: ['button', 'inner', 'primary'],
-        expected: `${config.namespace}-button__inner--primary`,
+        expected: `${themeConfig.namespace}-button__inner--primary`,
       },
     ];
 
@@ -101,12 +101,12 @@ describe('mixins/function', () => {
       {
         name: 'single argument',
         args: ['button'],
-        expected: `var(--${config.namespace}-button)`,
+        expected: `var(--${themeConfig.namespace}-button)`,
       },
       {
         name: 'multiple arguments',
         args: ['button', 'text-color'],
-        expected: `var(--${config.namespace}-button-text-color)`,
+        expected: `var(--${themeConfig.namespace}-button-text-color)`,
       },
     ];
 
@@ -132,7 +132,7 @@ describe('mixins/function', () => {
         @debug $result;
       `);
       expect(debugMessages[0]).toBe(
-        `var(--${config.namespace}-button-text-color, #fff)`,
+        `var(--${themeConfig.namespace}-button-text-color, #fff)`,
       );
     });
   });

@@ -1,4 +1,5 @@
 {
+  "name": "el-popover-workspace",
   "private": true,
   "description": "A popover component extracted from element-plus",
   "packageManager": "^pnpm@8.0.0",
@@ -27,6 +28,7 @@
     "@types/node": "^22.9.0",
     "@typescript-eslint/eslint-plugin": "^8.14.0",
     "@typescript-eslint/parser": "^8.14.0",
+    "@vue/tsconfig": "^0.6.0",
     "@vitejs/plugin-vue": "^5.2.0",
     "@vitejs/plugin-vue-jsx": "^4.1.0",
     "@vitest/coverage-v8": "^2.1.5",
@@ -47,7 +49,8 @@
     "turbo": "^2.3.0",
     "typescript": "^5.6.3",
     "unplugin-vue-macros": "^2.13.3",
-    "vite": "^5.4.10",
+    "vue": "^3.5.13",
+    "vite": "^5.4.11",
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.3.0",
     "vitest": "^2.1.5"
