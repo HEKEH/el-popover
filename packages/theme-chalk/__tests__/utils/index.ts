@@ -1,21 +1,24 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { compileString } from 'sass';
+import { compileString, StringOptions } from 'sass';
 
-export async function compileSass(content: string, loadPaths: string[]) {
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const srcPath = path.resolve(__dirname, '../../styles');
+
+export function compileSassString(
+  content: string,
+  options?: StringOptions<'sync'>,
+) {
   const result = compileString(content, {
-    loadPaths,
+    ...options,
+    loadPaths: options?.loadPaths ?? [srcPath],
   });
   return result;
 }
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const srcPath = path.resolve(__dirname, '../../src');
-
-export async function testSassString(sassContent: string) {
+export function debugSassString(sassContent: string) {
   const debugMessages: string[] = [];
-  const compileResult = await compileString(sassContent, {
-    loadPaths: [srcPath],
+  const compileResult = compileSassString(sassContent, {
     logger: {
       debug: message => {
         debugMessages.push(message);
