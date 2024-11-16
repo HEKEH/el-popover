@@ -1,0 +1,12 @@
+@use 'config';
+@use 'sass:meta';
+@use 'sass:string';
+
+// This function converts a selector to a string by removing the outermost quotes
+// and returning the resulting string.
+// Example: If the input selector is `".class"`, the function will return `class`.
+@function selectorToString($selector) {
+  $selector: meta.inspect($selector);
+  $selector: string.slice($selector, 2, -2);
+  @return $selector;
+}

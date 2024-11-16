@@ -1,8 +1,7 @@
 {
-  "name": "el-popover-workspace",
-  "version": "0.0.0",
+  "private": true,
   "description": "A popover component extracted from element-plus",
-  "packageManager": "^pnpm@7.13.0",
+  "packageManager": "^pnpm@8.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/HEKEH/el-popover"
@@ -13,7 +12,7 @@
   ],
   "scripts": {
     "dev": "cross-env ts-node scripts/dev-start.ts",
-    "build": "cross-env turbo build --filter=!el-popover-demo",
+    "build": "cross-env turbo build --filter=!@el-popover/demo",
     "lint": "eslint",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm"
@@ -48,7 +47,7 @@
     ]
   },
   "engines": {
-    "node": ">= 14",
-    "pnpm": ">= 6"
+    "node": ">= 18",
+    "pnpm": ">= 8"
   }
 }

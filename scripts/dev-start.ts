@@ -11,7 +11,7 @@ const projects: Array<ProjectConfig | Array<ProjectConfig>> = [
     logColor: LogColor.seafoam,
   },
   {
-    name: 'el-popover-demo',
+    name: '@el-popover/demo',
     path: join(__dirname, '../packages/demo'),
     command: 'pnpm dev',
     readySignal: /Local:\s+http:\/\/localhost:\d+\//,

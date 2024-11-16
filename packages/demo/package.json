@@ -1,5 +1,5 @@
 {
-  "name": "el-popover-demo",
+  "name": "@el-popover/demo",
   "description": "El Popover Demo",
   "version": "0.0.0",
   "private": true,
