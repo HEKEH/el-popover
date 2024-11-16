@@ -17,7 +17,7 @@
     "types": [],
     "paths": {
       "@el-popover/*": ["packages/*"],
-      "el-popover": ["./packages/el-popover/src/index.ts"]
+      "el-popover": ["packages/el-popover/src/index.ts"]
     },
     "preserveSymlinks": true
   }
