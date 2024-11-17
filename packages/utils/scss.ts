@@ -1,4 +1,4 @@
-import { compileString, StringOptions } from 'sass';
+import { compileString, type StringOptions } from 'sass';
 
 export function getVariablesFromScss(
   filePath: string,

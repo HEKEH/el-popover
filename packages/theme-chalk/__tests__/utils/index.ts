@@ -1,9 +1,9 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { compileString, StringOptions } from 'sass';
+import { compileString, type StringOptions } from 'sass';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const srcPath = path.resolve(__dirname, '../../styles');
+const rootPath = path.resolve(__dirname, '../../styles');
 
 export function compileSassString(
   content: string,
@@ -11,7 +11,7 @@ export function compileSassString(
 ) {
   const result = compileString(content, {
     ...options,
-    loadPaths: options?.loadPaths ?? [srcPath],
+    loadPaths: options?.loadPaths ?? [rootPath],
   });
   return result;
 }

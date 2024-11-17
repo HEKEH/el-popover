@@ -1,11 +1,16 @@
 import { resolve } from 'path';
 import { readFileSync } from 'fs';
-import { AliasOptions, defineConfig, PluginOption, UserConfig } from 'vite';
+import {
+  type AliasOptions,
+  defineConfig,
+  type PluginOption,
+  type UserConfig,
+} from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import dts from 'vite-plugin-dts';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
-import { themeConstantsPlugin } from '../theme-chalk/constants/vite-plugins';
+import { themeConfigPlugin } from '../theme-chalk/constants/vite-plugins';
 
 export default defineConfig(({ mode }) => {
   const pkg = JSON.parse(
@@ -26,7 +31,7 @@ export default defineConfig(({ mode }) => {
         outDir: 'dist',
         rollupTypes: true,
       }),
-      themeConstantsPlugin(),
+      themeConfigPlugin(),
     ],
     build: {
       minify: false,

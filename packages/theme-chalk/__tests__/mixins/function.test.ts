@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import themeConfig from '../../constants/config';
 
 describe('mixins/function', () => {
+  const functionImport = '@use "mixins/function" as *;';
   describe('selectorToString', () => {
     const testCases = [
       {
@@ -26,7 +27,7 @@ describe('mixins/function', () => {
       'should handle $name',
       async ({ input, expected }: (typeof testCases)[0]) => {
         const { debugMessages } = await debugSassString(`
-        @use 'mixins/function' as *;
+        ${functionImport}
         $test: '${input}';
         $result: selectorToString($test);
         @debug $result;
@@ -54,7 +55,7 @@ describe('mixins/function', () => {
       'should return $expected for $name',
       async ({ input, expected }: (typeof testCases)[0]) => {
         const { debugMessages } = await debugSassString(`
-        @use 'mixins/function' as *;
+        ${functionImport}
         $result: containsModifier('${input}');
         @debug $result;
       `);
@@ -87,7 +88,7 @@ describe('mixins/function', () => {
       async ({ args, expected }: (typeof testCases)[0]) => {
         const argsString = args.map(arg => `'${arg}'`).join(', ');
         const { debugMessages } = await debugSassString(`
-        @use 'mixins/function' as *;
+        ${functionImport}
         $result: bem(${argsString});
         @debug $result;
       `);
@@ -115,7 +116,7 @@ describe('mixins/function', () => {
       async ({ args, expected }: (typeof testCases)[0]) => {
         const argsString = args.map(arg => `'${arg}'`).join(', ');
         const { debugMessages } = await debugSassString(`
-        @use 'mixins/function' as *;
+        ${functionImport}
         $result: getCssVar(${argsString});
         @debug $result;
       `);
@@ -127,7 +128,7 @@ describe('mixins/function', () => {
   describe('getCssVarWithDefault', () => {
     it('should generate CSS variable with default value', async () => {
       const { debugMessages } = await debugSassString(`
-        @use 'mixins/function' as *;
+        ${functionImport}
         $result: getCssVarWithDefault(('button', 'text-color'), #fff);
         @debug $result;
       `);
@@ -155,7 +156,7 @@ describe('mixins/function', () => {
       'should return $expected for $name',
       async ({ input, expected }: (typeof testCases)[0]) => {
         const { debugMessages } = await debugSassString(`
-        @use 'mixins/function' as *;
+        ${functionImport}
         $result: containWhenFlag('${input}');
         @debug $result;
       `);

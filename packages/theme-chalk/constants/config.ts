@@ -1,4 +1,6 @@
+import path from 'path';
 import { getVariablesFromScss } from '../../utils/scss';
+import { fileURLToPath } from 'url';
 
 export type ThemeConfig = {
   namespace: string;
@@ -9,7 +11,8 @@ export type ThemeConfig = {
 };
 
 // Get the root path without using Node.js APIs
-const rootPath = new URL('../styles', import.meta.url).pathname;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const rootPath = path.resolve(__dirname, '../styles');
 
 const themeConfig = getVariablesFromScss('mixins/config.scss', {
   loadPaths: [rootPath],

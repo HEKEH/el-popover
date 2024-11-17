@@ -1,7 +1,7 @@
 import type { Plugin } from 'vite';
 import themeConfig from './config';
 
-export function themeConstantsPlugin(): Plugin {
+export function themeConfigPlugin(): Plugin {
   const virtualModuleId = 'virtual:theme-config';
   const resolvedVirtualModuleId = '\0' + virtualModuleId;
 

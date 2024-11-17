@@ -1,0 +1,88 @@
+@use 'mixins/_mixins' as *;
+@use 'mixins/_var' as *;
+@use 'common/_var' as *;
+
+$block: 'tooltip-v2';
+
+@include b($block) {
+  @include e(content) {
+    #{getCssVarName($block, 'padding')}: 5px 10px;
+    #{getCssVarName($block, 'border-radius')}: 4px;
+
+    @include css-var-from-global(($block, 'border-color'), ('border-color'));
+
+    border-radius: getCssVar($block, 'border-radius');
+    color: getCssVar('color-black');
+    background-color: getCssVar('color-white');
+    padding: getCssVar($block, 'padding');
+    border: 1px solid getCssVar('border-color');
+
+    $content-selector: &;
+
+    $sides: (
+      'top': 'bottom',
+      'bottom': 'top',
+      'left': 'right',
+      'right': 'left',
+    );
+
+    @include e(arrow) {
+      position: absolute;
+      color: getCssVar('color-white');
+      width: getCssVar($block, 'arrow-width');
+      height: getCssVar($block, 'arrow-height');
+      pointer-events: none;
+      left: getCssVar($block, 'arrow-x');
+      top: getCssVar($block, 'arrow-y');
+
+      &::before {
+        content: '';
+        width: 0;
+        height: 0;
+        border: getCssVar($block, 'arrow-border-width') solid transparent;
+        position: absolute;
+      }
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border: getCssVar($block, 'arrow-border-width') solid transparent;
+        position: absolute;
+      }
+
+      @each $side, $opposite in $sides {
+        #{$content-selector}[data-side^='#{$side}'] & {
+          #{$opposite}: 0;
+        }
+
+        #{$content-selector}[data-side^='#{$side}'] &::before {
+          border-#{$side}-color: getCssVar('color-white');
+          border-#{$side}-width: getCssVar($block, 'arrow-border-width');
+          border-#{$opposite}: 0;
+          #{$side}: calc(100% - 1px);
+        }
+
+        #{$content-selector}[data-side^='#{$side}'] &::after {
+          border-#{$side}-color: getCssVar('border-color');
+          border-#{$side}-width: getCssVar($block, 'arrow-border-width');
+          border-#{$opposite}: 0;
+          #{$side}: 100%;
+          z-index: -1;
+        }
+      }
+    }
+
+    &.is-dark {
+      #{getCssVarName($block, 'border-color')}: transparent;
+      background-color: getCssVar('color-black');
+      color: getCssVar('color-white');
+      border-color: transparent;
+
+      @include e(arrow) {
+        background-color: getCssVar('color-black');
+        border-color: transparent;
+      }
+    }
+  }
+}
