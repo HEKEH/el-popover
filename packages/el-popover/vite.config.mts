@@ -27,9 +27,13 @@ export default defineConfig(({ mode }) => {
       vueJsx() as PluginOption,
       cssInjectedByJsPlugin(),
       dts({
-        include: ['src/**/*.ts', 'src/**/*.vue'],
+        include: ['src/**/*.ts', 'src/**/*.vue', 'src/**/*.tsx', '**/*.d.ts'],
         outDir: 'dist',
         rollupTypes: true,
+        tsconfigPath: '../../tsconfig.web.json',
+        compilerOptions: {
+          types: ['node'],
+        },
       }),
       themeConfigPlugin(),
     ],
@@ -60,6 +64,9 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias,
     },
+    // define: {
+    //   'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    // },
   };
   return config;
 });

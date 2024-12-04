@@ -1,6 +1,5 @@
-import ElPopover from './main.vue';
+import ElPopover from './components/popover';
+export * from './components/popover';
+export * from './components/tooltip-v2';
+
 export default ElPopover;
-
-// import themeConfig from 'virtual:theme-config';
-
-// console.log(themeConfig);

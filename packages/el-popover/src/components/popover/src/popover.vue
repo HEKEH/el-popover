@@ -4,6 +4,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import '@el-popover/theme-chalk/styles/index.scss';
 
 const ElPopover = defineComponent({
   name: 'ElPopover',
