@@ -17,6 +17,14 @@ body {
 }
 
 .container {
-  width: 500px;
-  padding: 10px;
+  width: 100%;
+  padding: 20px;
+}
+.demo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  padding: 0.5rem;
 }

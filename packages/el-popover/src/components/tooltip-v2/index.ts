@@ -1,4 +1,4 @@
-import ElTooltipV2 from './src/tooltip.vue';
+import ElTooltip from './src/tooltip.vue';
 
 export * from './src/arrow';
 export * from './src/content';
@@ -7,6 +7,6 @@ export * from './src/tooltip';
 export * from './src/trigger';
 export * from './src/constants';
 
-export { ElTooltipV2 };
+export { ElTooltip };
 
-export default ElTooltipV2;
+export default ElTooltip;
