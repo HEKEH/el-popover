@@ -1,6 +1,6 @@
 import type { ExtractPropTypes, PropType } from 'vue';
 import type { Placement, Strategy, VirtualElement } from '@floating-ui/dom';
-import { useAriaProps } from '../../../hooks';
+import { useAriaProps } from 'el-popover/hooks';
 
 type PopperEffect = 'light' | 'dark';
 

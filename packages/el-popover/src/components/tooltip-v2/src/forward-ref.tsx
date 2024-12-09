@@ -1,7 +1,7 @@
 import { Fragment, defineComponent } from 'vue';
 
 import type { ExtractPropTypes, PropType, VNodeArrayChildren } from 'vue';
-import { isArray } from '@vue/shared';
+import { isArray } from 'el-popover/utils';
 
 export type RefSetter = (el: HTMLElement | null) => void;
 

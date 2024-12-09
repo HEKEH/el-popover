@@ -1,5 +1,5 @@
 import type { InjectionKey, Ref } from 'vue';
-import type { UseNamespaceReturn } from '../../../hooks';
+import type { UseNamespaceReturn } from 'el-popover/hooks';
 
 export type TooltipV2Context = {
   onClose: () => void;

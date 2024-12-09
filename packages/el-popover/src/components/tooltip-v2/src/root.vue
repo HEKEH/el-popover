@@ -14,7 +14,7 @@ import {
 } from 'vue';
 import { tooltipV2RootProps } from './root';
 import { useTimeoutFn } from '@vueuse/core';
-import { useNamespace } from '../../../hooks';
+import { useNamespace } from 'el-popover/hooks';
 import { TOOLTIP_V2_OPEN, tooltipV2RootKey } from './constants';
 
 defineOptions({

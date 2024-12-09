@@ -21,7 +21,7 @@ import {
   useFloating,
   useNamespace,
   useZIndex,
-} from '../../../hooks';
+} from 'el-popover/hooks';
 import ElVisuallyHidden from '../../visual-hidden';
 import { tooltipV2ContentKey, tooltipV2RootKey } from './constants';
 import { tooltipV2ContentProps } from './content';

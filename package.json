@@ -2,7 +2,7 @@
   "name": "el-popover-workspace",
   "private": true,
   "description": "A popover component extracted from element-plus",
-  "packageManager": "pnpm@9.0.0",
+  "packageManager": "pnpm@8.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/HEKEH/el-popover"
@@ -24,17 +24,17 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "@eslint/js": "^9.15.0",
-    "@types/jsdom": "^21.1.7",
     "@tsconfig/node20": "^20.1.4",
+    "@types/jsdom": "^21.1.7",
     "@types/node": "^22.9.0",
     "@typescript-eslint/eslint-plugin": "^8.14.0",
     "@typescript-eslint/parser": "^8.14.0",
-    "@vue/tsconfig": "^0.6.0",
     "@vitejs/plugin-vue": "^5.2.0",
     "@vitejs/plugin-vue-jsx": "^4.1.0",
     "@vitest/coverage-v8": "^2.1.5",
     "@vitest/ui": "^2.1.5",
     "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.6.0",
     "cross-env": "^7.0.3",
     "eslint": "^9.14.0",
     "eslint-config-prettier": "^9.1.0",
@@ -63,5 +63,10 @@
   "engines": {
     "node": ">= 18",
     "pnpm": ">= 8"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@sxzz/popperjs-es@2.11.7": "patches/@sxzz__popperjs-es@2.11.7.patch"
+    }
   }
 }

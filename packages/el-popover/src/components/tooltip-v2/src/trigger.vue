@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { inject, onBeforeUnmount, watch } from 'vue';
-import { composeEventHandlers } from '../../../utils';
+import { composeEventHandlers } from 'el-popover/utils';
 import { tooltipV2RootKey } from './constants';
 import ForwardRef from './forward-ref';
 import { tooltipV2TriggerProps } from './trigger';

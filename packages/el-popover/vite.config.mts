@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
 
   const alias: AliasOptions = {
     '@el-popover': resolve(__dirname, '../'),
+    'el-popover': resolve(__dirname, 'src/'),
   };
 
   const config: UserConfig = {

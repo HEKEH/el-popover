@@ -6,6 +6,7 @@ export function themeConfigPlugin(): Plugin {
   const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
   return {
+    name: 'ThemeChalkConfig',
     resolveId(id: string) {
       if (id === virtualModuleId) {
         return resolvedVirtualModuleId;

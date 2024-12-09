@@ -50,7 +50,7 @@ import TooltipV2Root from './root.vue';
 import TooltipV2Arrow from './arrow.vue';
 import TooltipV2Content from './content.vue';
 import TooltipV2Trigger from './trigger.vue';
-import { keysOf, pick } from '../../../utils';
+import { keysOf, pick } from 'el-popover/utils';
 
 defineOptions({
   name: 'ElTooltipV2',

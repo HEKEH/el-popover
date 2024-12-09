@@ -1,8 +1,7 @@
 import { resolve } from 'path';
-import { AliasOptions, defineConfig } from 'vite';
+import { type AliasOptions, defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import pkg from './package.json';
 import { createHtmlPlugin } from 'vite-plugin-html';
 
 // https://vitejs.dev/config/
@@ -28,7 +27,7 @@ export default defineConfig(({ mode }) => {
       createHtmlPlugin({
         inject: {
           data: {
-            title: pkg.description,
+            title: 'El Popover Demo',
           },
         },
       }),

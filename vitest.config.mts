@@ -4,9 +4,11 @@ import VueJsx from '@vitejs/plugin-vue-jsx';
 import VueMacros from 'unplugin-vue-macros/vite';
 import { resolve } from 'path';
 import type { AliasOptions } from 'vite';
+import { themeConfigPlugin } from './packages/theme-chalk/constants/vite-plugins';
 
 const alias: AliasOptions = {
   '@el-popover': resolve(__dirname, 'packages/'),
+  'el-popover': resolve(__dirname, 'packages/el-popover/src'),
 };
 
 export default defineConfig({
@@ -19,6 +21,7 @@ export default defineConfig({
         vueJsx: VueJsx(),
       },
     }),
+    themeConfigPlugin(),
   ],
   optimizeDeps: {
     disabled: true,

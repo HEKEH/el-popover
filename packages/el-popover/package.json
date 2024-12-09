@@ -28,10 +28,10 @@
     "lint": "eslint",
     "preinstall": "npx only-allow pnpm"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@el-popover/theme-chalk": "*",
+    "@el-popover/theme-chalk": "workspace:*",
     "@floating-ui/dom": "^1.0.1",
+    "@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.7",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "@vueuse/core": "^9.1.0",
