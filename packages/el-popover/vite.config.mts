@@ -46,9 +46,6 @@ export default defineConfig(({ mode }) => {
         formats: ['es', 'cjs'],
         fileName: format => `index.${format}.js`,
       },
-      watch: {
-        include: [],
-      },
       rollupOptions: {
         external: [
           ...Object.keys(pkg.dependencies || {}),

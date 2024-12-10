@@ -84,8 +84,8 @@ const onContextMenu = composeEventHandlers(
 
 const onKeydown = composeEventHandlers(
   stopWhenControlledOrDisabled,
-  (e: KeyboardEvent) => {
-    const { code } = e;
+  (e: Event) => {
+    const { code } = e as KeyboardEvent;
     if (props.triggerKeys.includes(code)) {
       e.preventDefault();
       onToggle(e);

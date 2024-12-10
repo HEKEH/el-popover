@@ -3,28 +3,36 @@
     <h1>El Tooltip Demo</h1>
     <div class="demos">
       <el-tooltip placement="top" effect="light">
-        <div class="tooltip-content">
-          <span>✨</span> This is a tooltip message
-        </div>
-        <template #trigger>
-          <button class="demo-button">Hover to see tooltip</button>
+        <template #content>
+          <div class="tooltip-content">
+            <span>✨</span> This is a tooltip message
+          </div>
         </template>
+        <button class="demo-button">Hover to see tooltip</button>
       </el-tooltip>
-      <el-tooltip placement="top" :show-arrow="true" effect="light">
-        <div class="tooltip-content">
-          <span>✨</span> This is a tooltip message
-        </div>
-        <template #trigger>
-          <button class="demo-button">Show Arrow</button>
+      <el-tooltip placement="top" effect="light" trigger="click">
+        <template #content>
+          <div class="tooltip-content">
+            <span>✨</span> This is a tooltip message
+          </div>
         </template>
+        <button class="demo-button">Click to see tooltip</button>
       </el-tooltip>
-      <el-tooltip placement="right" :show-arrow="true" effect="light">
-        <div class="tooltip-content">
-          <span>✨</span> This is a tooltip message
-        </div>
-        <template #trigger>
-          <button class="demo-button">Placement:Right</button>
+      <el-tooltip placement="top" :show-arrow="false" effect="light">
+        <template #content>
+          <div class="tooltip-content">
+            <span>✨</span> This is a tooltip message
+          </div>
         </template>
+        <button class="demo-button">Hide Arrow</button>
+      </el-tooltip>
+      <el-tooltip placement="right" effect="light">
+        <template #content>
+          <div class="tooltip-content">
+            <span>✨</span> This is a tooltip message
+          </div>
+        </template>
+        <button class="demo-button">Placement:Right</button>
       </el-tooltip>
     </div>
   </div>

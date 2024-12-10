@@ -1,5 +1,5 @@
 import ElPopover from './components/popover';
 export * from './components/popover';
-export * from './components/tooltip-v2';
+export * from './components/tooltip';
 
 export default ElPopover;
