@@ -19,3 +19,10 @@ export const isFunction = (val: unknown): val is Function =>
 
 export const isObject = (val: unknown): val is Record<string, any> =>
   val !== null && typeof val === 'object';
+
+export const isStringNumber = (val: string): boolean => {
+  if (!isString(val)) {
+    return false;
+  }
+  return !Number.isNaN(Number(val));
+};
