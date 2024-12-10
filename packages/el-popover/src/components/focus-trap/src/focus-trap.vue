@@ -13,6 +13,7 @@ import {
   watch,
 } from 'vue';
 import { useEscapeKeydown } from 'el-popover/hooks';
+import { EVENT_CODE } from 'el-popover/constants';
 import {
   createFocusOutPreventedEvent,
   focusFirstDescendant,
@@ -85,7 +86,8 @@ export default defineComponent({
 
       const { key, altKey, ctrlKey, metaKey, currentTarget, shiftKey } = e;
       const { loop } = props;
-      const isTabbing = key === 'Tab' && !altKey && !ctrlKey && !metaKey;
+      const isTabbing =
+        key === EVENT_CODE.tab && !altKey && !ctrlKey && !metaKey;
 
       const currentFocusingEl = document.activeElement;
       if (isTabbing && currentFocusingEl) {

@@ -1,3 +1,4 @@
+import { EVENT_CODE } from 'el-popover/constants';
 import { isClient } from 'el-popover/utils';
 import { onBeforeUnmount, onMounted } from 'vue';
 
@@ -5,7 +6,7 @@ let registeredEscapeHandlers: ((e: KeyboardEvent) => void)[] = [];
 
 const cachedHandler = (e: Event) => {
   const event = e as KeyboardEvent;
-  if (event.key === 'Escape') {
+  if (event.key === EVENT_CODE.esc) {
     registeredEscapeHandlers.forEach(registeredHandler =>
       registeredHandler(event),
     );

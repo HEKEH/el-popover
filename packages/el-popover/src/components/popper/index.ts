@@ -4,7 +4,7 @@ import ElPopperArrow from './src/arrow.vue';
 import ElPopperTrigger from './src/trigger.vue';
 import ElPopperContent from './src/content.vue';
 
-export { ElPopperArrow, ElPopperTrigger, ElPopperContent };
+export { ElPopper, ElPopperArrow, ElPopperTrigger, ElPopperContent };
 
 export default ElPopper;
 

@@ -19,7 +19,7 @@ export const popperTriggerProps = {
     type: Function as PropType<(e: Event) => void>,
   },
   onKeydown: {
-    type: Function as PropType<(e: Event) => void>,
+    type: Function as PropType<(e: KeyboardEvent) => void>,
   },
   onFocus: {
     type: Function as PropType<(e: Event) => void>,
