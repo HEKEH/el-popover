@@ -33,7 +33,7 @@ export const usePopperContent = (props: PopperContentProps) => {
     // Refer to https://popper.js.org/docs/v2/modifiers/arrow/
     return {
       name: 'arrow',
-      enabled: typeof arrowEl === 'undefined',
+      enabled: typeof arrowEl !== 'undefined',
       options: {
         element: arrowEl,
         padding: offset,
