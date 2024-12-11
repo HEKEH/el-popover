@@ -21,7 +21,8 @@
     "build": "cross-env turbo build --filter=!@el-popover/demo",
     "lint": "eslint",
     "prepare": "husky install",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "publish": "bash scripts/publish.sh"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
