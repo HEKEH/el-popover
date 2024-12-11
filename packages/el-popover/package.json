@@ -1,6 +1,6 @@
 {
   "name": "@hekeh/el-popover",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A popover component extracted from element-plus",
   "keywords": [
     "Element",
@@ -13,6 +13,7 @@
     "type": "git",
     "url": "https://github.com/HEKEH/el-popover"
   },
+  "homepage": "https://www.npmjs.com/package/@hekeh/el-popover",
   "license": "MIT",
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -32,7 +33,6 @@
   },
   "devDependencies": {
     "@el-popover/theme-chalk": "workspace:*",
-    "@floating-ui/dom": "^1.0.1",
     "@popperjs/core": "npm:@sxzz/popperjs-es@^2.11.7",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",

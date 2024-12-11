@@ -56,6 +56,7 @@ export default defineConfig(({ mode }) => {
             vue: 'Vue',
           },
         },
+        treeshake: true,
       },
       sourcemap: false,
     },
