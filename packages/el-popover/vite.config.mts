@@ -28,13 +28,9 @@ export default defineConfig(({ mode }) => {
       vueJsx() as PluginOption,
       cssInjectedByJsPlugin(),
       dts({
-        include: ['src/**/*.ts', 'src/**/*.vue', 'src/**/*.tsx', '**/*.d.ts'],
         outDir: 'dist',
         rollupTypes: true,
-        tsconfigPath: '../../tsconfig.web.json',
-        compilerOptions: {
-          types: ['node'],
-        },
+        tsconfigPath: './tsconfig.build.json',
       }),
       themeConfigPlugin(),
     ],
