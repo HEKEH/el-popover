@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "description": "A popover component extracted from element-plus",
   "keywords": [
-    "web",
+    "Element",
+    "Element Plus",
     "vue",
-    "element-plus"
+    "popover",
+    "tooltip"
   ],
   "repository": {
     "type": "git",

@@ -8,8 +8,11 @@
     "url": "https://github.com/HEKEH/el-popover"
   },
   "keywords": [
-    "web",
-    "vue"
+    "Element",
+    "Element Plus",
+    "vue",
+    "popover",
+    "tooltip"
   ],
   "scripts": {
     "test": "vitest",
