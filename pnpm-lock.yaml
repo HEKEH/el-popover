@@ -162,8 +162,6 @@ importers:
 
   packages/theme-chalk: {}
 
-  packages/utils: {}
-
 packages:
 
   /@ampproject/remapping@2.3.0:

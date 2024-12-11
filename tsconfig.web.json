@@ -6,7 +6,6 @@
     "**/dist/**",
     "**/__tests__/**",
     "**/test-helper/**",
-    "packages/test-utils/**",
     "**/*.md",
     "**/vite.config.*",
     "**/vitest.config.*"

@@ -31,6 +31,7 @@ export default defineConfig(({ mode }) => {
         outDir: 'dist',
         rollupTypes: true,
         tsconfigPath: './tsconfig.build.json',
+        bundledPackages: ['@vue/reactivity'],
       }),
       themeConfigPlugin(),
     ],

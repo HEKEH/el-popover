@@ -1,5 +1,5 @@
 import path from 'path';
-import { getVariablesFromScss } from '../../utils/scss';
+import { getVariablesFromScss } from '../utils/scss';
 import { fileURLToPath } from 'url';
 
 export type ThemeConfig = {
