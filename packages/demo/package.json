@@ -18,7 +18,7 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
-    "el-popover": "workspace:*",
+    "@hekeh/el-popover": "workspace:*",
     "vite-plugin-html": "^3.2.2",
     "vue-tsc": "^2.1.10"
   },

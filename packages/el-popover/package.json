@@ -1,6 +1,6 @@
 {
-  "name": "el-popover",
-  "version": "0.0.0",
+  "name": "@hekeh/el-popover",
+  "version": "0.1.0",
   "description": "A popover component extracted from element-plus",
   "keywords": [
     "Element",
@@ -49,5 +49,8 @@
   "files": [
     "dist",
     "package.json"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }

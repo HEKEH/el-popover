@@ -18,6 +18,8 @@
     "paths": {
       "el-popover/*": ["packages/el-popover/src/*"],
       "el-popover": ["packages/el-popover/src/index.ts"],
+      "@hekeh/el-popover/*": ["packages/el-popover/src/*"],
+      "@hekeh/el-popover": ["packages/el-popover/src/index.ts"],
       "@el-popover/*": ["packages/*"]
     },
     "preserveSymlinks": true

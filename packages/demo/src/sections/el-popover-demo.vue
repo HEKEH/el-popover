@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { ElPopover } from 'el-popover';
+import { ElPopover } from '@hekeh/el-popover';
 </script>
 
 <style scoped>

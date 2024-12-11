@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ElTooltip } from 'el-popover';
+import { ElTooltip } from '@hekeh/el-popover';
 </script>
 
 <style scoped>
