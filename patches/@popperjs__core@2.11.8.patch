@@ -1,0 +1,18 @@
+diff --git a/package.json b/package.json
+index a8fc8f64f039cdb5544abab2f6149f1ee971a1f7..0971154300ecc6c3c3184352b9fa63ff96726384 100644
+--- a/package.json
++++ b/package.json
+@@ -17,6 +17,13 @@
+     "popper",
+     "positioning engine"
+   ],
++  "exports": {
++    ".": {
++      "require": "./dist/cjs/popper.js",
++      "import": "./lib/index.js",
++      "types": "./index.d.ts"
++    }
++  },
+   "funding": {
+     "type": "opencollective",
+     "url": "https://opencollective.com/popperjs"

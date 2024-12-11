@@ -5,9 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 patchedDependencies:
-  '@sxzz/popperjs-es@2.11.7':
-    hash: jdqcbgfbyywg2onwluczfhqsjy
-    path: patches/@sxzz__popperjs-es@2.11.7.patch
+  '@popperjs/core@2.11.8':
+    hash: 4grltztjh5heiaoxgix5losllu
+    path: patches/@popperjs__core@2.11.8.patch
 
 importers:
 
@@ -138,8 +138,8 @@ importers:
   packages/el-popover:
     dependencies:
       '@popperjs/core':
-        specifier: npm:@sxzz/popperjs-es@^2.11.7
-        version: /@sxzz/popperjs-es@2.11.7(patch_hash=jdqcbgfbyywg2onwluczfhqsjy)
+        specifier: ^2.11.8
+        version: 2.11.8(patch_hash=4grltztjh5heiaoxgix5losllu)
       vue:
         specifier: ^3.0.0
         version: 3.5.13(typescript@5.5.4)
@@ -1539,6 +1539,11 @@ packages:
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
     dev: true
 
+  /@popperjs/core@2.11.8(patch_hash=4grltztjh5heiaoxgix5losllu):
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
+    patched: true
+
   /@rollup/pluginutils@4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
     engines: {node: '>= 8.0.0'}
@@ -1776,11 +1781,6 @@ packages:
     transitivePeerDependencies:
       - '@types/node'
     dev: true
-
-  /@sxzz/popperjs-es@2.11.7(patch_hash=jdqcbgfbyywg2onwluczfhqsjy):
-    resolution: {integrity: sha512-Ccy0NlLkzr0Ex2FKvh2X+OyERHXJ88XJ1MXtsI9y9fGexlaXaVTPzBCRBwIxFkORuOb+uBqeu+RqnpgYTEZRUQ==}
-    dev: false
-    patched: true
 
   /@tsconfig/node10@1.0.11:
     resolution: {integrity: sha512-DcRjDCujK/kCk/cUe8Xz8ZSpm8mS3mNNpta+jGCA6USEDfktlNvm1+IuZ9eTcDbNk41BHwpHHeW+N1lKCz4zOw==}

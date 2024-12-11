@@ -70,7 +70,7 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@sxzz/popperjs-es@2.11.7": "patches/@sxzz__popperjs-es@2.11.7.patch"
+      "@popperjs/core@2.11.8": "patches/@popperjs__core@2.11.8.patch"
     }
   }
 }
