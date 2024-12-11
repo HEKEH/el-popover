@@ -10,7 +10,7 @@ echo "[INFO] ==== Starting publish process ===="
 
 # Build
 echo "[INFO] Building package..."
-npm run build
+pnpm build
 
 no_patch=false
 for arg in "$@"; do
@@ -23,14 +23,14 @@ done
 # Update version
 if [ "$no_patch" = false ]; then
   echo "[INFO] Updating version..."
-  npm version patch
+  pnpm version patch
 fi
 
 # Publish
 echo "[INFO] Publishing to npm..."
-npm publish --access public
+pnpm publish --access public
 
 echo "[SUCCESS] ==== Package published successfully! ===="
 
 # Return to root directory
-cd ../..
+cd -

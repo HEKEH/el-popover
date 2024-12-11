@@ -17,13 +17,13 @@
 
 ```bash
 # 使用 npm
-npm install el-popover
+npm install @hekeh/el-popover
 
 # 使用 yarn
-yarn add el-popover
+yarn add @hekeh/el-popover
 
 # 使用 pnpm
-pnpm add el-popover
+pnpm add @hekeh/el-popover
 ```
 
 ## 使用方法
@@ -31,7 +31,7 @@ pnpm add el-popover
 ### Popover
 
 ```typescript
-import { Popover } from 'el-popover';
+import { Popover } from '@hekeh/el-popover';
 ```
 
 本组件的 API 与 Element Plus 的 Popover 组件完全一致。你可以参考 [Element Plus 的 Popover 文档](https://element-plus.org/zh-CN/component/popover.html) 获取完整用法。
@@ -39,7 +39,7 @@ import { Popover } from 'el-popover';
 ### Tooltip
 
 ```typescript
-import { Tooltip } from 'el-popover';
+import { Tooltip } from '@hekeh/el-popover';
 ```
 
 本组件的 API 与 Element Plus 的 Tooltip 组件完全一致。你可以参考 [Element Plus 的 Tooltip 文档](https://element-plus.org/zh-CN/component/tooltip.html) 获取完整用法。

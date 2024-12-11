@@ -15,13 +15,13 @@
 
 ```bash
 # Using npm
-npm install el-popover
+npm install @hekeh/el-popover
 
 # Using yarn
-yarn add el-popover
+yarn add @hekeh/el-popover
 
 # Using pnpm
-pnpm add el-popover
+pnpm add @hekeh/el-popover
 ```
 
 ## Usage
@@ -31,7 +31,7 @@ pnpm add el-popover
 Import the Popover component:
 
 ```typescript
-import { Popover } from 'el-popover';
+import { Popover } from '@hekeh/el-popover';
 ```
 
 The API is identical to Element Plus's Popover component. For complete usage details, please refer to the [Element Plus Popover documentation](https://element-plus.org/en-US/component/popover.html).
@@ -41,7 +41,7 @@ The API is identical to Element Plus's Popover component. For complete usage det
 Import the Tooltip component:
 
 ```typescript
-import { Tooltip } from 'el-popover';
+import { Tooltip } from '@hekeh/el-popover';
 ```
 
 The API is identical to Element Plus's Tooltip component. For complete usage details, please refer to the [Element Plus Tooltip documentation](https://element-plus.org/en-US/component/tooltip.html).
