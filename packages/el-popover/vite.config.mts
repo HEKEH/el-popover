@@ -21,12 +21,14 @@ export default defineConfig(({ mode }) => {
     '@el-popover': resolve(__dirname, '../'),
     'el-popover': resolve(__dirname, 'src/'),
   };
-
-  const config: UserConfig = {
-    plugins: [
-      vue() as PluginOption,
-      vueJsx() as PluginOption,
-      cssInjectedByJsPlugin(),
+  const plugins = [
+    vue() as PluginOption,
+    vueJsx() as PluginOption,
+    cssInjectedByJsPlugin(),
+    themeConfigPlugin(),
+  ];
+  if (process.env.ENABLE_DTS === 'true') {
+    plugins.push(
       dts({
         outDir: 'temp-types',
         tsconfigPath: './tsconfig.build.json',
@@ -35,8 +37,11 @@ export default defineConfig(({ mode }) => {
         // rollupTypes: true,  // Adding '@popperjs/core' to bundledPackages causes an error, so rollupTypes can only be done using rollup-plugin-dts with rollup.dts.config.mjs
         // bundledPackages: ['@vue/reactivity', '@popperjs/core'],
       }),
-      themeConfigPlugin(),
-    ],
+    );
+  }
+
+  const config: UserConfig = {
+    plugins,
     build: {
       minify: false,
       lib: {

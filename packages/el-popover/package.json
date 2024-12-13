@@ -27,8 +27,9 @@
   },
   "scripts": {
     "check:types": "vue-tsc --declaration --noEmit -p tsconfig.build.json",
-    "dev": "vite build --watch",
-    "build": "pnpm run check:types && vite build && pnpm run build:dts",
+    "clean:temp-types": "rm -rf temp-types",
+    "dev": "ENABLE_DTS=false vite build --watch",
+    "build": "pnpm run check:types && vite build && pnpm run build:dts && pnpm run clean:temp-types",
     "build:dts": "rollup --config rollup.dts.config.mjs",
     "copy:readme": "cp ../../README.md .  && cp ../../README.zh-cn.md .",
     "before:publish": "pnpm run build && pnpm run copy:readme",
