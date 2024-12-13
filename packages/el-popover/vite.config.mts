@@ -28,10 +28,11 @@ export default defineConfig(({ mode }) => {
       vueJsx() as PluginOption,
       cssInjectedByJsPlugin(),
       dts({
-        outDir: 'dist',
-        rollupTypes: true,
+        // outDir: 'dist/types',
         tsconfigPath: './tsconfig.build.json',
-        bundledPackages: ['@vue/reactivity'],
+        entryRoot: resolve(__dirname, 'src/'),
+        copyDtsFiles: true,
+        // bundledPackages: ['@vue/reactivity'], //, '@popperjs/core'
       }),
       themeConfigPlugin(),
     ],

@@ -4,5 +4,11 @@
     "composite": false,
     "types": ["node"]
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "src/**/*.tsx", "**/*.d.ts"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "src/**/*.tsx",
+    "src/**/*.d.ts",
+    "typings/**/*.d.ts"
+  ]
 }
