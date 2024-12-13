@@ -8,9 +8,13 @@ cd packages/el-popover
 
 echo "[INFO] ==== Starting publish process ===="
 
-# install dependencies
+# Install dependencies
 echo "[INFO] Installing dependencies..."
 pnpm install
+
+# Build
+echo "[INFO] Preparing publish..."
+pnpm run before:publish
 
 # Publish
 echo "[INFO] Publishing to npm..."

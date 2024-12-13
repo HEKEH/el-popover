@@ -1,6 +1,6 @@
 {
   "name": "@hekeh/el-popover",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A popover component extracted from element-plus",
   "keywords": [
     "Element",
@@ -26,8 +26,12 @@
     }
   },
   "scripts": {
-    "dev": "vue-tsc --declaration --noEmit -p tsconfig.build.json && vite build --watch",
-    "build": "vue-tsc --declaration --noEmit -p tsconfig.build.json && vite build && cp ../../README.md .  && cp ../../README.zh-cn.md .",
+    "check:types": "vue-tsc --declaration --noEmit -p tsconfig.build.json",
+    "dev": "vite build --watch",
+    "build": "pnpm run check:types && vite build && pnpm run build:dts",
+    "build:dts": "rollup --config rollup.dts.config.mjs",
+    "copy:readme": "cp ../../README.md .  && cp ../../README.zh-cn.md .",
+    "before:publish": "pnpm run build && pnpm run copy:readme",
     "lint": "eslint",
     "preinstall": "npx only-allow pnpm"
   },
