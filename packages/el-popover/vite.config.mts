@@ -32,8 +32,8 @@ export default defineConfig(({ mode }) => {
         tsconfigPath: './tsconfig.build.json',
         copyDtsFiles: true,
         // entryRoot: __dirname,
-        // rollupTypes: true,
-        // bundledPackages: ['@vue/reactivity', '@popperjs/core'], //, '@popperjs/core'
+        // rollupTypes: true,  // Adding '@popperjs/core' to bundledPackages causes an error, so rollupTypes can only be done using rollup-plugin-dts with rollup.dts.config.mjs
+        // bundledPackages: ['@vue/reactivity', '@popperjs/core'],
       }),
       themeConfigPlugin(),
     ],

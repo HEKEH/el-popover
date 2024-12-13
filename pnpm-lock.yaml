@@ -143,9 +143,6 @@ importers:
 
   packages/el-popover:
     dependencies:
-      '@popperjs/core':
-        specifier: ^2.11.8
-        version: 2.11.8(patch_hash=4grltztjh5heiaoxgix5losllu)
       vue:
         specifier: ^3.0.0
         version: 3.5.13(typescript@5.5.4)
@@ -153,6 +150,9 @@ importers:
       '@el-popover/theme-chalk':
         specifier: workspace:*
         version: link:../theme-chalk
+      '@popperjs/core':
+        specifier: ^2.11.8
+        version: 2.11.8(patch_hash=4grltztjh5heiaoxgix5losllu)
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.2.1(vite@5.4.11)(vue@3.5.13)
@@ -1547,7 +1547,7 @@ packages:
 
   /@popperjs/core@2.11.8(patch_hash=4grltztjh5heiaoxgix5losllu):
     resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
-    dev: false
+    dev: true
     patched: true
 
   /@rollup/pluginutils@4.2.1:

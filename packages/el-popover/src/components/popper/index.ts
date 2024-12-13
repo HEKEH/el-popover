@@ -14,4 +14,11 @@ export * from './src/content';
 export * from './src/arrow';
 export * from './src/constants';
 
-export type { Placement, Options } from '@popperjs/core';
+/** need to export these types, or projects using this library will report a ts-plugin(4023) type error */
+export type {
+  Placement,
+  Options,
+  Instance,
+  Modifier,
+  State,
+} from '@popperjs/core';
