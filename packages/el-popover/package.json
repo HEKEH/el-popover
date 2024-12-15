@@ -27,7 +27,7 @@
   },
   "scripts": {
     "check:types": "vue-tsc --declaration --noEmit -p tsconfig.build.json",
-    "clean:temp-types": "rm -rf temp-types",
+    "clean:temp-types": "rm -rf dist/temp-types",
     "dev": "ENABLE_DTS=false vite build --watch",
     "build": "pnpm run check:types && vite build && pnpm run build:dts && pnpm run clean:temp-types",
     "build:dts": "rollup --config rollup.dts.config.mjs",

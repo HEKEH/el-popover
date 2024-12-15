@@ -27,10 +27,10 @@ export default defineConfig(({ mode }) => {
     cssInjectedByJsPlugin(),
     themeConfigPlugin(),
   ];
-  if (process.env.ENABLE_DTS === 'true') {
+  if (process.env.ENABLE_DTS !== 'false') {
     plugins.push(
       dts({
-        outDir: 'temp-types',
+        outDir: './dist/temp-types',
         tsconfigPath: './tsconfig.build.json',
         copyDtsFiles: true,
         // entryRoot: __dirname,

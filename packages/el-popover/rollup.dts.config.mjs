@@ -8,7 +8,7 @@ const pkg = JSON.parse(
 );
 
 export default {
-  input: './temp-types/packages/el-popover/src/index.d.ts',
+  input: './dist/temp-types/packages/el-popover/src/index.d.ts',
   output: {
     file: 'dist/index.d.ts',
     format: 'es',
