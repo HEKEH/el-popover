@@ -1,5 +1,7 @@
 # "El Popover" - A Popover Component Based on Element Plus
 
+[English](README.md) | [中文](README.zh-cn.md)
+
 ## Introduction
 
 "El Popover" is a lightweight Vue3 component library based on Element Plus. It provides Popover and Tooltip components with functionality identical to Element Plus, but without requiring the full Element Plus library. This package can also serve as a learning resource for understanding Element Plus Popover components.
