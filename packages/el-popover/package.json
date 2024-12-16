@@ -1,6 +1,6 @@
 {
   "name": "@hekeh/el-popover",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A popover component extracted from element-plus",
   "keywords": [
     "Element",
@@ -31,7 +31,7 @@
     "dev": "ENABLE_DTS=false vite build --watch",
     "build": "pnpm run check:types && vite build && pnpm run build:dts && pnpm run clean:temp-types",
     "build:dts": "rollup --config rollup.dts.config.mjs",
-    "copy:readme": "cp ../../README.md .  && cp ../../README.zh-cn.md .",
+    "copy:readme": "ts-node scripts/copy-readme.ts",
     "before:publish": "pnpm run build && pnpm run copy:readme",
     "lint": "eslint",
     "preinstall": "npx only-allow pnpm"
