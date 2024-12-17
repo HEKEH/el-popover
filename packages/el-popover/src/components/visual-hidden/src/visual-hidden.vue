@@ -1,18 +1,13 @@
-<template>
-  <span v-bind="$attrs" :style="computedStyle">
-    <slot />
-  </span>
-</template>
-
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { visualHiddenProps } from './visual-hidden'
-import type { StyleValue } from 'vue'
-const props = defineProps(visualHiddenProps)
+import type { StyleValue } from 'vue';
+import { computed } from 'vue';
+import { visualHiddenProps } from './visual-hidden';
 
 defineOptions({
   name: 'ElVisuallyHidden',
-})
+});
+
+const props = defineProps(visualHiddenProps);
 
 const computedStyle = computed<StyleValue>(() => {
   return [
@@ -29,6 +24,12 @@ const computedStyle = computed<StyleValue>(() => {
       whiteSpace: 'nowrap',
       wordWrap: 'normal',
     },
-  ]
-})
+  ];
+});
 </script>
+
+<template>
+  <span v-bind="$attrs" :style="computedStyle">
+    <slot />
+  </span>
+</template>

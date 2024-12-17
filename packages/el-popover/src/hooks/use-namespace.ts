@@ -1,6 +1,6 @@
+import type { InjectionKey, Ref } from 'vue';
 import themeConfig from 'virtual:theme-config';
 import { computed, getCurrentInstance, inject, ref, unref } from 'vue';
-import type { InjectionKey, Ref } from 'vue';
 
 export const defaultNamespace = themeConfig.namespace;
 const statePrefix = themeConfig['state-prefix']; // is-
@@ -8,13 +8,13 @@ const commonSeparator = themeConfig['common-separator']; // -
 const elementSeparator = themeConfig['element-separator']; // __
 const modifierSeparator = themeConfig['modifier-separator']; // --
 
-const _bem = (
+function _bem(
   namespace: string,
   block: string,
   blockSuffix: string,
   element: string,
   modifier: string,
-) => {
+) {
   let cls = `${namespace}${commonSeparator}${block}`;
   if (blockSuffix) {
     cls += `${commonSeparator}${blockSuffix}`;
@@ -26,7 +26,7 @@ const _bem = (
     cls += `${modifierSeparator}${modifier}`;
   }
   return cls;
-};
+}
 
 export const namespaceContextKey: InjectionKey<Ref<string | undefined>> =
   Symbol('namespaceContextKey');
@@ -36,9 +36,9 @@ export const namespaceContextKey: InjectionKey<Ref<string | undefined>> =
  * @param namespaceOverrides - Optional ref to override the default namespace
  * @returns A computed ref containing the resolved namespace
  */
-export const useGetDerivedNamespace = (
+export function useGetDerivedNamespace(
   namespaceOverrides?: Ref<string | undefined>,
-) => {
+) {
   // Determine the final namespace to use
   const derivedNamespace =
     // Priority 1: Use the override value if provided
@@ -57,12 +57,12 @@ export const useGetDerivedNamespace = (
   });
 
   return namespace;
-};
+}
 
-export const useNamespace = (
+export function useNamespace(
   block: string,
   namespaceOverrides?: Ref<string | undefined>,
-) => {
+) {
   const namespace = useGetDerivedNamespace(namespaceOverrides);
   const b = (blockSuffix = '') =>
     _bem(namespace.value, block, blockSuffix, '', '');
@@ -135,6 +135,6 @@ export const useNamespace = (
     cssVarBlock,
     cssVarBlockName,
   };
-};
+}
 
 export type UseNamespaceReturn = ReturnType<typeof useNamespace>;

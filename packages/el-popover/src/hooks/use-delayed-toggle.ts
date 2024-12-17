@@ -1,8 +1,8 @@
-import { unref } from 'vue';
-import { useTimeout } from './use-timeout';
-
 import type { ExtractPropTypes, ToRefs } from 'vue';
 import { isNumber } from 'el-popover/utils';
+
+import { unref } from 'vue';
+import { useTimeout } from './use-timeout';
 
 export const useDelayedToggleProps = {
   /**
@@ -33,13 +33,13 @@ export type UseDelayedToggleProps = {
   close: (event?: Event) => void;
 } & ToRefs<ExtractPropTypes<typeof useDelayedToggleProps>>;
 
-export const useDelayedToggle = ({
+export function useDelayedToggle({
   showAfter,
   hideAfter,
   autoClose,
   open,
   close,
-}: UseDelayedToggleProps) => {
+}: UseDelayedToggleProps) {
   const { registerTimeout } = useTimeout();
   const {
     registerTimeout: registerTimeoutForAutoClose,
@@ -71,4 +71,4 @@ export const useDelayedToggle = ({
     onOpen,
     onClose,
   };
-};
+}

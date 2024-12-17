@@ -18,8 +18,8 @@ export const ariaProps = {
   ariaControls: { type: String },
 } as const;
 
-export const useAriaProps = <T extends keyof typeof ariaProps>(
+export function useAriaProps<T extends keyof typeof ariaProps>(
   arias: Array<T>,
-) => {
+) {
   return pick<typeof ariaProps, T>(ariaProps, arias);
-};
+}

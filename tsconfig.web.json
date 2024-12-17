@@ -1,5 +1,12 @@
 {
   "extends": ["./tsconfig.base.json", "@vue/tsconfig/tsconfig.dom.json"],
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "preserve",
+    "lib": ["ES2018", "DOM", "DOM.Iterable"],
+    "types": ["unplugin-vue-macros/macros-global"],
+    "skipLibCheck": true
+  },
   "include": ["packages"],
   "exclude": [
     "**/node_modules/**",
@@ -9,12 +16,5 @@
     "**/*.md",
     "**/vite.config.*",
     "**/vitest.config.*"
-  ],
-  "compilerOptions": {
-    "composite": true,
-    "jsx": "preserve",
-    "lib": ["ES2018", "DOM", "DOM.Iterable"],
-    "types": ["unplugin-vue-macros/macros-global"],
-    "skipLibCheck": true
-  }
+  ]
 }

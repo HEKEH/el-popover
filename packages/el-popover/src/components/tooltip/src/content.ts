@@ -1,8 +1,8 @@
+import type { ExtractPropTypes, PropType } from 'vue';
+import type TooltipContent from './content.vue';
+
 import { popperContentProps } from 'el-popover/components/popper';
 import { useAriaProps, useDelayedToggleProps } from 'el-popover/hooks';
-
-import type TooltipContent from './content.vue';
-import type { ExtractPropTypes, PropType } from 'vue';
 
 export const useTooltipContentProps = {
   ...useDelayedToggleProps,

@@ -1,13 +1,13 @@
-import { computed, getCurrentInstance, onMounted, watch } from 'vue';
-import { isBoolean, isClient, isFunction } from 'el-popover/utils';
-
+import type { ExtractPropType } from 'el-popover/types';
 import type {
   ComponentPublicInstance,
   ExtractPropTypes,
   PropType,
   Ref,
 } from 'vue';
-import type { ExtractPropType } from 'el-popover/types';
+
+import { isBoolean, isClient, isFunction } from 'el-popover/utils';
+import { computed, getCurrentInstance, onMounted, watch } from 'vue';
 
 const _prop = {
   type: [Boolean, null] as PropType<boolean | null>,
@@ -29,7 +29,7 @@ export type UseModelTogglePropsGeneric<T extends string> = {
   [K in `onUpdate:${T}`]: ExtractPropType<typeof _event>;
 };
 
-export const createModelToggleComposable = <T extends string>(name: T) => {
+export function createModelToggleComposable<T extends string>(name: T) {
   const updateEventKey = `update:${name}` as const;
   const updateEventKeyRaw = `onUpdate:${name}` as const;
   const useModelToggleEmits = [updateEventKey];
@@ -92,8 +92,9 @@ export const createModelToggleComposable = <T extends string>(name: T) => {
       if (
         props.disabled === true ||
         (isFunction(shouldProceed) && !shouldProceed())
-      )
+      ) {
         return;
+      }
 
       const shouldEmit = hasUpdateHandler.value && isClient;
 
@@ -107,7 +108,9 @@ export const createModelToggleComposable = <T extends string>(name: T) => {
     };
 
     const hide = (event?: Event) => {
-      if (props.disabled === true || !isClient) return;
+      if (props.disabled === true || !isClient) {
+        return;
+      }
 
       const shouldEmit = hasUpdateHandler.value && isClient;
 
@@ -121,7 +124,9 @@ export const createModelToggleComposable = <T extends string>(name: T) => {
     };
 
     const onChange = (val: boolean) => {
-      if (!isBoolean(val)) return;
+      if (!isBoolean(val)) {
+        return;
+      }
       if (props.disabled && val) {
         if (hasUpdateHandler.value) {
           emit(updateEventKey, false);
@@ -182,7 +187,7 @@ export const createModelToggleComposable = <T extends string>(name: T) => {
     useModelToggleProps,
     useModelToggleEmits,
   };
-};
+}
 
 const { useModelToggle, useModelToggleProps, useModelToggleEmits } =
   createModelToggleComposable('modelValue');
@@ -191,11 +196,11 @@ export { useModelToggle, useModelToggleEmits, useModelToggleProps };
 
 export type UseModelToggleProps = ExtractPropTypes<typeof useModelToggleProps>;
 
-export type ModelToggleParams = {
+export interface ModelToggleParams {
   indicator: Ref<boolean>;
   toggleReason?: Ref<Event | undefined>;
   shouldHideWhenRouteChanges?: Ref<boolean>;
   shouldProceed?: () => boolean;
   onShow?: (event?: Event) => void;
   onHide?: (event?: Event) => void;
-};
+}

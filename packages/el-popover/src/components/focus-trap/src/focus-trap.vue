@@ -1,7 +1,10 @@
-<template>
-  <slot :handle-keydown="onKeydown" />
-</template>
+<!-- eslint-disable ts/no-use-before-define -->
+<!-- eslint-disable vue/custom-event-name-casing -->
 <script lang="ts">
+import type { PropType } from 'vue';
+import { EVENT_CODE } from 'el-popover/constants';
+import { useEscapeKeydown } from 'el-popover/hooks';
+import { isNil, isString } from 'el-popover/utils';
 import {
   defineComponent,
   nextTick,
@@ -12,19 +15,7 @@ import {
   unref,
   watch,
 } from 'vue';
-import { useEscapeKeydown } from 'el-popover/hooks';
-import { EVENT_CODE } from 'el-popover/constants';
-import {
-  createFocusOutPreventedEvent,
-  focusFirstDescendant,
-  focusableStack,
-  getEdges,
-  isFocusCausedByUserEvent,
-  obtainAllFocusableElements,
-  tryFocus,
-  useFocusReason,
-  type FocusLayer,
-} from './utils';
+
 import {
   FOCUS_AFTER_RELEASED,
   FOCUS_AFTER_TRAPPED,
@@ -33,9 +24,17 @@ import {
   ON_RELEASE_FOCUS_EVT,
   ON_TRAP_FOCUS_EVT,
 } from './tokens';
-
-import type { PropType } from 'vue';
-import { isNil, isString } from 'el-popover/utils';
+import {
+  createFocusOutPreventedEvent,
+  focusableStack,
+  focusFirstDescendant,
+  type FocusLayer,
+  getEdges,
+  isFocusCausedByUserEvent,
+  obtainAllFocusableElements,
+  tryFocus,
+  useFocusReason,
+} from './utils';
 
 export default defineComponent({
   name: 'ElFocusTrap',
@@ -81,8 +80,12 @@ export default defineComponent({
     };
 
     const onKeydown = (e: KeyboardEvent) => {
-      if (!props.loop && !props.trapped) return;
-      if (focusLayer.paused) return;
+      if (!props.loop && !props.trapped) {
+        return;
+      }
+      if (focusLayer.paused) {
+        return;
+      }
 
       const { key, altKey, ctrlKey, metaKey, currentTarget, shiftKey } = e;
       const { loop } = props;
@@ -112,7 +115,9 @@ export default defineComponent({
             emit('focusout-prevented', focusoutPreventedEvent);
             if (!focusoutPreventedEvent.defaultPrevented) {
               e.preventDefault();
-              if (loop) tryFocus(first, true);
+              if (loop) {
+                tryFocus(first, true);
+              }
             }
           } else if (
             shiftKey &&
@@ -124,7 +129,9 @@ export default defineComponent({
             emit('focusout-prevented', focusoutPreventedEvent);
             if (!focusoutPreventedEvent.defaultPrevented) {
               e.preventDefault();
-              if (loop) tryFocus(last, true);
+              if (loop) {
+                tryFocus(last, true);
+              }
             }
           }
         }
@@ -285,7 +292,7 @@ export default defineComponent({
         trapContainer.dispatchEvent(releasedEvent);
         if (
           !releasedEvent.defaultPrevented &&
-          (focusReason.value == 'keyboard' ||
+          (focusReason.value === 'keyboard' ||
             !isFocusCausedByUserEvent() ||
             trapContainer.contains(document.activeElement))
         ) {
@@ -333,3 +340,7 @@ export default defineComponent({
   },
 });
 </script>
+
+<template>
+  <slot :handle-keydown="onKeydown" />
+</template>

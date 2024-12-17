@@ -1,5 +1,8 @@
-import { spawn, SpawnOptions } from 'child_process';
-import { LogColor, log, logError } from './log';
+import type { SpawnOptions } from 'node:child_process';
+import { spawn } from 'node:child_process';
+import * as process from 'node:process';
+
+import { log, LogColor, logError } from './log';
 
 const runningChildProcesses: ReturnType<typeof spawn>[] = [];
 
@@ -74,13 +77,13 @@ export function killAllChildProcesses() {
 
 type ReadySignal = string | RegExp;
 
-export type ProjectConfig = {
+export interface ProjectConfig {
   name: string;
   path: string;
   command: string;
   readySignal?: ReadySignal;
   logColor: LogColor;
-};
+}
 
 /** start projects sequentially */
 export async function startProjects(

@@ -1,7 +1,7 @@
-import { computed, getCurrentInstance, inject, ref, unref } from 'vue';
-import { debugWarn, isClient, isNumber } from '../utils';
-
 import type { InjectionKey, Ref } from 'vue';
+import { computed, getCurrentInstance, inject, ref, unref } from 'vue';
+
+import { debugWarn, isClient, isNumber } from '../utils';
 
 export interface ElZIndexInjectionContext {
   current: number;
@@ -22,7 +22,7 @@ export const ZINDEX_INJECTION_KEY: InjectionKey<ElZIndexInjectionContext> =
 export const zIndexContextKey: InjectionKey<Ref<number | undefined>> =
   Symbol('zIndexContextKey');
 
-export const useZIndex = (zIndexOverrides?: Ref<number>) => {
+export function useZIndex(zIndexOverrides?: Ref<number>) {
   const increasingInjection = getCurrentInstance()
     ? inject(ZINDEX_INJECTION_KEY, initial)
     : initial;
@@ -59,6 +59,6 @@ usage: app.provide(ZINDEX_INJECTION_KEY, { current: 0 })`,
     currentZIndex,
     nextZIndex,
   };
-};
+}
 
 export type UseZIndexReturn = ReturnType<typeof useZIndex>;

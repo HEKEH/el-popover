@@ -1,16 +1,16 @@
+import type { Modifier } from '@popperjs/core';
+import type { MaybeRef } from '@vueuse/core';
+
+import type { ComponentPublicInstance } from 'vue';
+import type { Measurable } from './constants';
+import type { PopperCoreConfigProps } from './content';
 import { unrefElement } from '@vueuse/core';
 import { isClient } from 'el-popover/utils';
 
-import type { ComponentPublicInstance } from 'vue';
-import type { MaybeRef } from '@vueuse/core';
-import type { Modifier } from '@popperjs/core';
-import type { Measurable } from './constants';
-import type { PopperCoreConfigProps } from './content';
-
-export const buildPopperOptions = (
+export function buildPopperOptions(
   props: PopperCoreConfigProps,
   modifiers: Modifier<any, any>[] = [],
-) => {
+) {
   const { placement, strategy, popperOptions } = props;
   const options = {
     placement,
@@ -21,14 +21,14 @@ export const buildPopperOptions = (
 
   deriveExtraModifiers(options, popperOptions?.modifiers);
   return options;
-};
+}
 
-export const unwrapMeasurableEl = (
+export function unwrapMeasurableEl(
   $el: MaybeRef<Measurable | undefined | ComponentPublicInstance>,
-) => {
+) {
   if (!isClient) return;
   return unrefElement($el as HTMLElement);
-};
+}
 
 function genModifiers(options: PopperCoreConfigProps) {
   const { offset, gpuAcceleration, fallbackPlacements } = options;

@@ -1,16 +1,16 @@
 import { nextTick } from 'vue';
 
-const tick = async (times: number) => {
+async function tick(times: number) {
   while (times--) {
     await nextTick();
   }
-};
+}
 
 export default tick;
 
 // in order to test transitions, we need to use
 // await rAF() after firing transition events.
-export const rAF = async () => {
+export async function rAF() {
   return new Promise(res => {
     requestAnimationFrame(() => {
       requestAnimationFrame(async () => {
@@ -19,4 +19,4 @@ export const rAF = async () => {
       });
     });
   });
-};
+}

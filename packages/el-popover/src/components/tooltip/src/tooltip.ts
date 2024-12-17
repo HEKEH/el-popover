@@ -1,10 +1,10 @@
-import { createModelToggleComposable } from 'el-popover/hooks';
-import { popperArrowProps, popperProps } from 'el-popover/components/popper';
-import { useTooltipContentProps } from './content';
-import { useTooltipTriggerProps } from './trigger';
-import type Tooltip from './tooltip.vue';
-
 import type { ExtractPropTypes } from 'vue';
+import type Tooltip from './tooltip.vue';
+import { popperArrowProps, popperProps } from 'el-popover/components/popper';
+import { createModelToggleComposable } from 'el-popover/hooks';
+import { useTooltipContentProps } from './content';
+
+import { useTooltipTriggerProps } from './trigger';
 
 export const {
   useModelToggleProps: useTooltipModelToggleProps,

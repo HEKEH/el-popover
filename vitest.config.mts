@@ -1,9 +1,9 @@
-import { defineConfig } from 'vitest/config';
+import type { AliasOptions } from 'vite';
+import { resolve } from 'node:path';
 import Vue from '@vitejs/plugin-vue';
 import VueJsx from '@vitejs/plugin-vue-jsx';
 import VueMacros from 'unplugin-vue-macros/vite';
-import { resolve } from 'path';
-import type { AliasOptions } from 'vite';
+import { defineConfig } from 'vitest/config';
 import { themeConfigPlugin } from './packages/theme-chalk/constants/vite-plugins';
 
 const alias: AliasOptions = {

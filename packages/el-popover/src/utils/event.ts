@@ -1,8 +1,8 @@
-export const composeEventHandlers = <E>(
+export function composeEventHandlers<E>(
   theirsHandler?: (event: E) => boolean | void,
   oursHandler?: (event: E) => void,
   { checkForDefaultPrevented = true } = {},
-) => {
+) {
   const handleEvent = (event: E) => {
     const shouldPrevent = theirsHandler?.(event);
 
@@ -11,4 +11,4 @@ export const composeEventHandlers = <E>(
     }
   };
   return handleEvent;
-};
+}

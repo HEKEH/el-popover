@@ -1,30 +1,12 @@
-<template>
-  <el-popper-trigger
-    :id="id"
-    :virtual-ref="virtualRef"
-    :open="open"
-    :virtual-triggering="virtualTriggering"
-    :class="ns.e('trigger')"
-    @blur="onBlur"
-    @click="onClick"
-    @contextmenu="onContextMenu"
-    @focus="onFocus"
-    @mouseenter="onMouseenter"
-    @mouseleave="onMouseleave"
-    @keydown="onKeydown"
-  >
-    <slot />
-  </el-popper-trigger>
-</template>
 <script lang="ts" setup>
-import { inject, ref, toRef, unref } from 'vue';
+import type { OnlyChildExpose } from 'el-popover/components/slot';
 import { ElPopperTrigger } from 'el-popover/components/popper';
-import { composeEventHandlers } from 'el-popover/utils';
 import { useNamespace } from 'el-popover/hooks';
+import { composeEventHandlers } from 'el-popover/utils';
+import { inject, ref, toRef, unref } from 'vue';
 import { TOOLTIP_INJECTION_KEY } from './constants';
 import { useTooltipTriggerProps } from './trigger';
 import { whenTrigger } from './utils';
-import type { OnlyChildExpose } from 'el-popover/components/slot';
 
 defineOptions({
   name: 'ElTooltipTrigger',
@@ -40,11 +22,11 @@ const { controlled, id, open, onOpen, onClose, onToggle } = inject(
 
 const triggerRef = ref<OnlyChildExpose | null>(null);
 
-const stopWhenControlledOrDisabled = () => {
+function stopWhenControlledOrDisabled() {
   if (unref(controlled) || props.disabled) {
     return true;
   }
-};
+}
 const trigger = toRef(props, 'trigger');
 const onMouseenter = composeEventHandlers(
   stopWhenControlledOrDisabled,
@@ -100,3 +82,22 @@ defineExpose({
   triggerRef,
 });
 </script>
+
+<template>
+  <ElPopperTrigger
+    :id="id"
+    :virtual-ref="virtualRef"
+    :open="open"
+    :virtual-triggering="virtualTriggering"
+    :class="ns.e('trigger')"
+    @blur="onBlur"
+    @click="onClick"
+    @contextmenu="onContextMenu"
+    @focus="onFocus"
+    @mouseenter="onMouseenter"
+    @mouseleave="onMouseleave"
+    @keydown="onKeydown"
+  >
+    <slot />
+  </ElPopperTrigger>
+</template>

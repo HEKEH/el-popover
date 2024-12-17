@@ -1,5 +1,78 @@
+<!-- eslint-disable vue/custom-event-name-casing -->
+<script lang="ts" setup>
+import type { TooltipInstance } from 'el-popover/components/tooltip';
+import { ElTooltip } from 'el-popover/components/tooltip';
+import { useNamespace } from 'el-popover/hooks';
+import { addUnit } from 'el-popover/utils';
+import { computed, ref, unref } from 'vue';
+import { popoverEmits, popoverProps } from './popover';
+
+defineOptions({
+  name: 'ElPopover',
+});
+
+const props = defineProps(popoverProps);
+const emit = defineEmits(popoverEmits);
+
+const updateEventKeyRaw = `onUpdate:visible` as const;
+
+const onUpdateVisible = computed(() => {
+  return props[updateEventKeyRaw];
+});
+
+const ns = useNamespace('popover');
+const tooltipRef = ref<TooltipInstance>();
+const popperRef = computed(() => {
+  return unref(tooltipRef)?.popperRef;
+});
+
+const style = computed(() => {
+  return [
+    {
+      width: addUnit(props.width),
+    },
+    props.popperStyle!,
+  ];
+});
+
+const kls = computed(() => {
+  return [ns.b(), props.popperClass!, { [ns.m('plain')]: !!props.content }];
+});
+
+const gpuAcceleration = computed(() => {
+  return props.transition === `${ns.namespace.value}-fade-in-linear`;
+});
+
+function hide() {
+  tooltipRef.value?.hide();
+}
+
+function beforeEnter() {
+  emit('before-enter');
+}
+function beforeLeave() {
+  emit('before-leave');
+}
+
+function afterEnter() {
+  emit('after-enter');
+}
+
+function afterLeave() {
+  emit('update:visible', false);
+  emit('after-leave');
+}
+
+defineExpose({
+  /** @description popper ref */
+  popperRef,
+  /** @description hide popover */
+  hide,
+});
+</script>
+
 <template>
-  <el-tooltip
+  <ElTooltip
     ref="tooltipRef"
     v-bind="$attrs"
     :trigger="trigger"
@@ -41,76 +114,5 @@
         {{ content }}
       </slot>
     </template>
-  </el-tooltip>
+  </ElTooltip>
 </template>
-<script lang="ts" setup>
-import { computed, ref, unref } from 'vue';
-import { ElTooltip } from 'el-popover/components/tooltip';
-import { addUnit } from 'el-popover/utils';
-import { useNamespace } from 'el-popover/hooks';
-import { popoverEmits, popoverProps } from './popover';
-import type { TooltipInstance } from 'el-popover/components/tooltip';
-
-defineOptions({
-  name: 'ElPopover',
-});
-
-const props = defineProps(popoverProps);
-const emit = defineEmits(popoverEmits);
-
-const updateEventKeyRaw = `onUpdate:visible` as const;
-
-const onUpdateVisible = computed(() => {
-  return props[updateEventKeyRaw];
-});
-
-const ns = useNamespace('popover');
-const tooltipRef = ref<TooltipInstance>();
-const popperRef = computed(() => {
-  return unref(tooltipRef)?.popperRef;
-});
-
-const style = computed(() => {
-  return [
-    {
-      width: addUnit(props.width),
-    },
-    props.popperStyle!,
-  ];
-});
-
-const kls = computed(() => {
-  return [ns.b(), props.popperClass!, { [ns.m('plain')]: !!props.content }];
-});
-
-const gpuAcceleration = computed(() => {
-  return props.transition === `${ns.namespace.value}-fade-in-linear`;
-});
-
-const hide = () => {
-  tooltipRef.value?.hide();
-};
-
-const beforeEnter = () => {
-  emit('before-enter');
-};
-const beforeLeave = () => {
-  emit('before-leave');
-};
-
-const afterEnter = () => {
-  emit('after-enter');
-};
-
-const afterLeave = () => {
-  emit('update:visible', false);
-  emit('after-leave');
-};
-
-defineExpose({
-  /** @description popper ref */
-  popperRef,
-  /** @description hide popover */
-  hide,
-});
-</script>

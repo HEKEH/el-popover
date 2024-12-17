@@ -1,14 +1,10 @@
-<template>
-  <slot />
-</template>
-
 <script lang="ts" setup>
+import type { Instance as PopperInstance } from '@popperjs/core';
+import type { ElPopperInjectionContext } from './constants';
 import { computed, provide, ref } from 'vue';
+
 import { POPPER_INJECTION_KEY } from './constants';
 import { popperProps } from './popper';
-
-import { type Instance as PopperInstance } from '@popperjs/core';
-import type { ElPopperInjectionContext } from './constants';
 
 defineOptions({
   name: 'ElPopper',
@@ -49,3 +45,7 @@ defineExpose(popperProvides);
 
 provide(POPPER_INJECTION_KEY, popperProvides);
 </script>
+
+<template>
+  <slot />
+</template>

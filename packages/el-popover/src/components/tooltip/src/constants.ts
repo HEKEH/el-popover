@@ -1,8 +1,8 @@
+import type { Arrayable } from 'el-popover/types';
 import type { InjectionKey, Ref } from 'vue';
 import type { TooltipTriggerType } from './trigger';
-import type { Arrayable } from 'el-popover/types';
 
-export type ElTooltipInjectionContext = {
+export interface ElTooltipInjectionContext {
   controlled: Ref<boolean>;
   id: Ref<string>;
   open: Ref<boolean>;
@@ -15,7 +15,7 @@ export type ElTooltipInjectionContext = {
   onBeforeShow: () => void;
   onBeforeHide: () => void;
   updatePopper: () => void;
-};
+}
 
 export const TOOLTIP_INJECTION_KEY: InjectionKey<ElTooltipInjectionContext> =
   Symbol('elTooltip');

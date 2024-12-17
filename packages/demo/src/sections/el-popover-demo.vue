@@ -1,41 +1,41 @@
+<script setup lang="ts">
+import { ElPopover } from '@hekeh/el-popover';
+</script>
+
 <template>
   <div class="demo">
     <h1>El Popover Demo</h1>
     <div class="demos">
-      <el-popover placement="top" effect="light">
+      <ElPopover placement="top" effect="light">
         <div class="popover-content">This is popover content</div>
         <template #reference>
           <button class="demo-button">Hover to see popover</button>
         </template>
-      </el-popover>
+      </ElPopover>
 
-      <el-popover placement="top" effect="light" trigger="click">
+      <ElPopover placement="top" effect="light" trigger="click">
         <div class="popover-content">This is popover content</div>
         <template #reference>
           <button class="demo-button">Click to see popover</button>
         </template>
-      </el-popover>
+      </ElPopover>
 
-      <el-popover placement="top" :show-arrow="false" effect="light">
+      <ElPopover placement="top" :show-arrow="false" effect="light">
         <div class="popover-content">This is popover content</div>
         <template #reference>
           <button class="demo-button">Hide Arrow</button>
         </template>
-      </el-popover>
+      </ElPopover>
 
-      <el-popover placement="right" effect="light">
+      <ElPopover placement="right" effect="light">
         <div class="popover-content">This is popover content</div>
         <template #reference>
           <button class="demo-button">Placement:Right</button>
         </template>
-      </el-popover>
+      </ElPopover>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ElPopover } from '@hekeh/el-popover';
-</script>
 
 <style scoped>
 .demos {

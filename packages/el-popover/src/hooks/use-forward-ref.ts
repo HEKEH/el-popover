@@ -1,17 +1,17 @@
-import { provide } from 'vue';
-
 import type { InjectionKey, ObjectDirective, Ref } from 'vue';
+
+import { provide } from 'vue';
 
 type ForwardRefSetter = <T>(el: T) => void;
 
-export type ForwardRefInjectionContext = {
+export interface ForwardRefInjectionContext {
   setForwardRef: ForwardRefSetter;
-};
+}
 
 export const FORWARD_REF_INJECTION_KEY: InjectionKey<ForwardRefInjectionContext> =
   Symbol('elForwardRef');
 
-export const useForwardRef = <T>(forwardRef: Ref<T | null>) => {
+export function useForwardRef<T>(forwardRef: Ref<T | null>) {
   const setForwardRef = (el: T) => {
     forwardRef.value = el;
   };
@@ -19,11 +19,11 @@ export const useForwardRef = <T>(forwardRef: Ref<T | null>) => {
   provide(FORWARD_REF_INJECTION_KEY, {
     setForwardRef,
   } as ForwardRefInjectionContext);
-};
+}
 
-export const useForwardRefDirective = (
+export function useForwardRefDirective(
   setForwardRef: ForwardRefSetter,
-): ObjectDirective => {
+): ObjectDirective {
   return {
     mounted(el) {
       setForwardRef(el);
@@ -35,4 +35,4 @@ export const useForwardRefDirective = (
       setForwardRef(null);
     },
   };
-};
+}

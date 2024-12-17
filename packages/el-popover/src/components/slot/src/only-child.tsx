@@ -1,24 +1,24 @@
-import {
-  Comment,
-  Fragment,
-  Text,
-  cloneVNode,
-  defineComponent,
-  inject,
-  withDirectives,
-} from 'vue';
-import { debugWarn, isObject } from 'el-popover/utils';
+import type { Ref, VNode } from 'vue';
 import {
   FORWARD_REF_INJECTION_KEY,
   useForwardRefDirective,
   useNamespace,
 } from 'el-popover/hooks';
+import { debugWarn, isObject } from 'el-popover/utils';
 
-import type { Ref, VNode } from 'vue';
+import {
+  cloneVNode,
+  Comment,
+  defineComponent,
+  Fragment,
+  inject,
+  Text,
+  withDirectives,
+} from 'vue';
 
 const NAME = 'ElOnlyChild';
 
-const NOOP = () => {};
+function NOOP() {}
 
 export const OnlyChild = defineComponent({
   name: NAME,
@@ -81,6 +81,6 @@ function wrapTextContent(s: string | VNode) {
   return <span class={ns.e('content')}>{s}</span>;
 }
 
-export type OnlyChildExpose = {
+export interface OnlyChildExpose {
   forwardRef: Ref<HTMLElement>;
-};
+}

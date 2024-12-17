@@ -1,11 +1,11 @@
+import type { Options, Placement } from '@popperjs/core';
+import type { ExtractPropTypes, PropType } from 'vue';
+import type Popover from './popover.vue';
 import {
   useTooltipContentProps,
   useTooltipTriggerProps,
 } from 'el-popover/components/tooltip';
-import type { ExtractPropTypes, PropType } from 'vue';
-import type Popover from './popover.vue';
 import { isBoolean } from 'el-popover/utils';
-import type { Options, Placement } from '@popperjs/core';
 
 export const popoverProps = {
   /**

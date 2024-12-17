@@ -1,17 +1,8 @@
-<template>
-  <span
-    ref="arrowRef"
-    :class="ns.e('arrow')"
-    :style="arrowStyle"
-    data-popper-arrow
-  />
-</template>
-
 <script lang="ts" setup>
-import { inject, onBeforeUnmount, watch } from 'vue';
-import { POPPER_CONTENT_INJECTION_KEY } from './constants';
-import { popperArrowProps } from './arrow';
 import { useNamespace } from 'el-popover/hooks';
+import { inject, onBeforeUnmount, watch } from 'vue';
+import { popperArrowProps } from './arrow';
+import { POPPER_CONTENT_INJECTION_KEY } from './constants';
 
 defineOptions({
   name: 'ElPopperArrow',
@@ -43,3 +34,12 @@ defineExpose({
   arrowRef,
 });
 </script>
+
+<template>
+  <span
+    ref="arrowRef"
+    :class="ns.e('arrow')"
+    :style="arrowStyle"
+    data-popper-arrow
+  />
+</template>

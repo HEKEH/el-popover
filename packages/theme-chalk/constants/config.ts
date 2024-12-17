@@ -1,14 +1,14 @@
-import path from 'path';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { getVariablesFromScss } from '../utils/scss';
-import { fileURLToPath } from 'url';
 
-export type ThemeConfig = {
+export interface ThemeConfig {
   namespace: string;
   'common-separator': string;
   'element-separator': string;
   'modifier-separator': string;
   'state-prefix': string;
-};
+}
 
 // Get the root path without using Node.js APIs
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

@@ -1,9 +1,9 @@
 /**
  * @desc Determine if target element is focusable
  * @param element {HTMLElement}
- * @returns {Boolean} true if it is focusable
+ * @returns {boolean} true if it is focusable
  */
-export const isFocusable = (element: HTMLElement): boolean => {
+export function isFocusable(element: HTMLElement): boolean {
   if (
     element.tabIndex > 0 ||
     (element.tabIndex === 0 && element.getAttribute('tabIndex') !== null)
@@ -41,9 +41,11 @@ export const isFocusable = (element: HTMLElement): boolean => {
       return false;
     }
   }
-};
+}
 
-export const isElement = (e: unknown): e is Element => {
-  if (typeof Element === 'undefined') return false;
+export function isElement(e: unknown): e is Element {
+  if (typeof Element === 'undefined') {
+    return false;
+  }
   return e instanceof Element;
-};
+}

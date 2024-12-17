@@ -1,26 +1,13 @@
-<template>
-  <el-only-child
-    v-if="!virtualTriggering"
-    v-bind="$attrs"
-    :aria-controls="ariaControls"
-    :aria-describedby="ariaDescribedby"
-    :aria-expanded="ariaExpanded"
-    :aria-haspopup="ariaHaspopup"
-  >
-    <slot />
-  </el-only-child>
-</template>
-
 <script lang="ts" setup>
-import { computed, inject, onBeforeUnmount, onMounted, watch } from 'vue';
+import type { WatchStopHandle } from 'vue';
 import { unrefElement } from '@vueuse/core';
 import { ElOnlyChild } from 'el-popover/components/slot';
 import { useForwardRef } from 'el-popover/hooks';
 import { isElement, isFocusable, isNil } from 'el-popover/utils';
+import { computed, inject, onBeforeUnmount, onMounted, watch } from 'vue';
 import { POPPER_INJECTION_KEY } from './constants';
-import { popperTriggerProps } from './trigger';
 
-import type { WatchStopHandle } from 'vue';
+import { popperTriggerProps } from './trigger';
 
 defineOptions({
   name: 'ElPopperTrigger',
@@ -33,6 +20,13 @@ const { role, triggerRef } = inject(POPPER_INJECTION_KEY, undefined)!;
 
 useForwardRef(triggerRef);
 
+const ariaHaspopup = computed<string | undefined>(() => {
+  if (role && role.value !== 'tooltip') {
+    return role.value;
+  }
+  return undefined;
+});
+
 const ariaControls = computed<string | undefined>(() => {
   return ariaHaspopup.value ? props.id : undefined;
 });
@@ -44,18 +38,11 @@ const ariaDescribedby = computed<string | undefined>(() => {
   return undefined;
 });
 
-const ariaHaspopup = computed<string | undefined>(() => {
-  if (role && role.value !== 'tooltip') {
-    return role.value;
-  }
-  return undefined;
-});
-
 const ariaExpanded = computed<string | undefined>(() => {
   return ariaHaspopup.value ? `${props.open}` : undefined;
 });
 
-let virtualTriggerAriaStopWatch: WatchStopHandle | undefined = undefined;
+let virtualTriggerAriaStopWatch: WatchStopHandle | undefined;
 
 const TRIGGER_ELE_EVENTS = [
   'onMouseenter',
@@ -155,3 +142,16 @@ defineExpose({
   triggerRef,
 });
 </script>
+
+<template>
+  <ElOnlyChild
+    v-if="!virtualTriggering"
+    v-bind="$attrs"
+    :aria-controls="ariaControls"
+    :aria-describedby="ariaDescribedby"
+    :aria-expanded="ariaExpanded"
+    :aria-haspopup="ariaHaspopup"
+  >
+    <slot />
+  </ElOnlyChild>
+</template>

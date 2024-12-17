@@ -1,28 +1,35 @@
 export { isClient } from '@vueuse/core';
 
-export const isNumber = (val: unknown): val is number =>
-  typeof val === 'number';
-export const isBoolean = (val: unknown): val is boolean =>
-  typeof val === 'boolean';
+export function isNumber(val: unknown): val is number {
+  return typeof val === 'number';
+}
+export function isBoolean(val: unknown): val is boolean {
+  return typeof val === 'boolean';
+}
 
-export const isNil = (val: unknown): val is null | undefined =>
-  val === null || val === undefined;
+export function isNil(val: unknown): val is null | undefined {
+  return val === null || val === undefined;
+}
 
-export const isArray = (val: unknown): val is Array<any> => {
+export function isArray(val: unknown): val is Array<any> {
   return Array.isArray(val);
-};
-export const isString = (val: unknown): val is string =>
-  typeof val === 'string';
+}
+export function isString(val: unknown): val is string {
+  return typeof val === 'string';
+}
 
-export const isFunction = (val: unknown): val is Function =>
-  typeof val === 'function';
+// eslint-disable-next-line ts/no-unsafe-function-type
+export function isFunction(val: unknown): val is Function {
+  return typeof val === 'function';
+}
 
-export const isObject = (val: unknown): val is Record<string, any> =>
-  val !== null && typeof val === 'object';
+export function isObject(val: unknown): val is Record<string, any> {
+  return val !== null && typeof val === 'object';
+}
 
-export const isStringNumber = (val: string): boolean => {
+export function isStringNumber(val: string): boolean {
   if (!isString(val)) {
     return false;
   }
   return !Number.isNaN(Number(val));
-};
+}

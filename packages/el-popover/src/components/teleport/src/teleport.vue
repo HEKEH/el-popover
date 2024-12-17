@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+import { teleportProps } from './teleport';
+
+defineProps(teleportProps);
+</script>
+
 <template>
   <template v-if="disabled">
     <slot />
@@ -6,9 +12,3 @@
     <slot />
   </teleport>
 </template>
-
-<script lang="ts" setup>
-import { teleportProps } from './teleport';
-
-defineProps(teleportProps);
-</script>

@@ -23,7 +23,7 @@ $vars: ();
   );
   return result.css
     .toString()
-    .match(/:export\s*{([^}]+)}/)?.[1]
+    .match(/:export\s*\{([^}]+)\}/)?.[1]
     .split(';')
     .map(item => item.trim())
     .filter(Boolean)

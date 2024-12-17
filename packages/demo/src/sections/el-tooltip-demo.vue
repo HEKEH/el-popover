@@ -1,46 +1,46 @@
+<script setup lang="ts">
+import { ElTooltip } from '@hekeh/el-popover';
+</script>
+
 <template>
   <div class="demo">
     <h1>El Tooltip Demo</h1>
     <div class="demos">
-      <el-tooltip placement="top" effect="light">
+      <ElTooltip placement="top" effect="light">
         <template #content>
           <div class="tooltip-content">
             <span>✨</span> This is a tooltip message
           </div>
         </template>
         <button class="demo-button">Hover to see tooltip</button>
-      </el-tooltip>
-      <el-tooltip placement="top" effect="light" trigger="click">
+      </ElTooltip>
+      <ElTooltip placement="top" effect="light" trigger="click">
         <template #content>
           <div class="tooltip-content">
             <span>✨</span> This is a tooltip message
           </div>
         </template>
         <button class="demo-button">Click to see tooltip</button>
-      </el-tooltip>
-      <el-tooltip placement="top" :show-arrow="false" effect="light">
+      </ElTooltip>
+      <ElTooltip placement="top" :show-arrow="false" effect="light">
         <template #content>
           <div class="tooltip-content">
             <span>✨</span> This is a tooltip message
           </div>
         </template>
         <button class="demo-button">Hide Arrow</button>
-      </el-tooltip>
-      <el-tooltip placement="right" effect="light">
+      </ElTooltip>
+      <ElTooltip placement="right" effect="light">
         <template #content>
           <div class="tooltip-content">
             <span>✨</span> This is a tooltip message
           </div>
         </template>
         <button class="demo-button">Placement:Right</button>
-      </el-tooltip>
+      </ElTooltip>
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { ElTooltip } from '@hekeh/el-popover';
-</script>
 
 <style scoped>
 .demos {

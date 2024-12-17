@@ -1,14 +1,14 @@
 {
   "name": "@el-popover/theme-chalk",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "license": "MIT",
   "scripts": {
     "lint": "eslint",
     "preinstall": "npx only-allow pnpm"
   },
-  "devDependencies": {},
   "dependencies": {},
+  "devDependencies": {},
   "browserslist": [
     "> 1%",
     "not ie 11"

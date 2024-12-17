@@ -1,18 +1,19 @@
-import { resolve } from 'path';
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import * as process from 'node:process';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import {
   type AliasOptions,
   defineConfig,
   type PluginOption,
   type UserConfig,
 } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import vueJsx from '@vitejs/plugin-vue-jsx';
-import dts from 'vite-plugin-dts';
 import cssInjectedByJsPlugin from 'vite-plugin-css-injected-by-js';
+import dts from 'vite-plugin-dts';
 import { themeConfigPlugin } from '../theme-chalk/constants/vite-plugins';
 
-export default defineConfig(({ mode }) => {
+export default defineConfig(() => {
   const pkg = JSON.parse(
     readFileSync(new URL('./package.json', import.meta.url), 'utf8'),
   );

@@ -1,42 +1,16 @@
-<template>
-  <div
-    ref="contentRef"
-    v-bind="contentAttrs"
-    :style="contentStyle"
-    :class="contentClass"
-    tabindex="-1"
-    @mouseenter="e => $emit('mouseenter', e)"
-    @mouseleave="e => $emit('mouseleave', e)"
-  >
-    <el-focus-trap
-      :trapped="trapped"
-      :trap-on-focus-in="true"
-      :focus-trap-el="contentRef"
-      :focus-start-el="focusStartRef"
-      @focus-after-trapped="onFocusAfterTrapped"
-      @focus-after-released="onFocusAfterReleased"
-      @focusin="onFocusInTrap"
-      @focusout-prevented="onFocusoutPrevented"
-      @release-requested="onReleaseRequested"
-    >
-      <slot />
-    </el-focus-trap>
-  </div>
-</template>
-
 <script lang="ts" setup>
+import type { WatchStopHandle } from 'vue';
+import ElFocusTrap from 'el-popover/components/focus-trap';
+import { isElement, isNil } from 'el-popover/utils';
 import { onBeforeUnmount, onMounted, provide, ref, unref, watch } from 'vue';
-import { isNil, isElement } from 'el-popover/utils';
-import { POPPER_CONTENT_INJECTION_KEY } from './constants';
-import { popperContentEmits, popperContentProps } from './content';
 import {
   usePopperContent,
   usePopperContentDOM,
   usePopperContentFocusTrap,
 } from './composables';
-import ElFocusTrap from 'el-popover/components/focus-trap';
+import { POPPER_CONTENT_INJECTION_KEY } from './constants';
 
-import type { WatchStopHandle } from 'vue';
+import { popperContentEmits, popperContentProps } from './content';
 
 // const NOOP = () => {};
 
@@ -44,9 +18,9 @@ defineOptions({
   name: 'ElPopperContent',
 });
 
-const emit = defineEmits(popperContentEmits);
-
 const props = defineProps(popperContentProps);
+
+const emit = defineEmits(popperContentEmits);
 
 const {
   focusStartRef,
@@ -94,21 +68,21 @@ provide(POPPER_CONTENT_INJECTION_KEY, {
 //   });
 // }
 
-let triggerTargetAriaStopWatch: WatchStopHandle | undefined = undefined;
+let triggerTargetAriaStopWatch: WatchStopHandle | undefined;
 
-const updatePopper = (shouldUpdateZIndex = true) => {
+function updatePopper(shouldUpdateZIndex = true) {
   update();
   shouldUpdateZIndex && updateZIndex();
-};
+}
 
-const togglePopperAlive = () => {
+function togglePopperAlive() {
   updatePopper(false);
   if (props.visible && props.focusOnShow) {
     trapped.value = true;
   } else if (props.visible === false) {
     trapped.value = false;
   }
-};
+}
 
 onMounted(() => {
   watch(
@@ -170,3 +144,29 @@ defineExpose({
   contentStyle,
 });
 </script>
+
+<template>
+  <div
+    ref="contentRef"
+    v-bind="contentAttrs"
+    :style="contentStyle"
+    :class="contentClass"
+    tabindex="-1"
+    @mouseenter="e => $emit('mouseenter', e)"
+    @mouseleave="e => $emit('mouseleave', e)"
+  >
+    <ElFocusTrap
+      :trapped="trapped"
+      :trap-on-focus-in="true"
+      :focus-trap-el="contentRef"
+      :focus-start-el="focusStartRef"
+      @focus-after-trapped="onFocusAfterTrapped"
+      @focus-after-released="onFocusAfterReleased"
+      @focusin="onFocusInTrap"
+      @focusout-prevented="onFocusoutPrevented"
+      @release-requested="onReleaseRequested"
+    >
+      <slot />
+    </ElFocusTrap>
+  </div>
+</template>

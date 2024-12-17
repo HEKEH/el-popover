@@ -1,14 +1,14 @@
-import { getCurrentInstance, inject, unref } from 'vue';
-import { type MaybeRef, computedEager } from '@vueuse/core';
+import type { InjectionKey, Ref } from 'vue';
+import { computedEager, type MaybeRef } from '@vueuse/core';
 import { debugWarn, isClient } from 'el-popover/utils';
+import { getCurrentInstance, inject, unref } from 'vue';
+
 import { useGetDerivedNamespace } from './use-namespace';
 
-import type { InjectionKey, Ref } from 'vue';
-
-export type ElIdInjectionContext = {
+export interface ElIdInjectionContext {
   prefix: number;
   current: number;
-};
+}
 
 const defaultIdInjection = {
   prefix: Math.floor(Math.random() * 10000),
@@ -18,13 +18,13 @@ const defaultIdInjection = {
 export const ID_INJECTION_KEY: InjectionKey<ElIdInjectionContext> =
   Symbol('elIdInjection');
 
-export const useIdInjection = (): ElIdInjectionContext => {
+export function useIdInjection(): ElIdInjectionContext {
   return getCurrentInstance()
     ? inject(ID_INJECTION_KEY, defaultIdInjection)
     : defaultIdInjection;
-};
+}
 
-export const useId = (deterministicId?: MaybeRef<string>): Ref<string> => {
+export function useId(deterministicId?: MaybeRef<string>): Ref<string> {
   const idInjection = useIdInjection();
   if (!isClient && idInjection === defaultIdInjection) {
     debugWarn(
@@ -47,4 +47,4 @@ usage: app.provide(ID_INJECTION_KEY, {
   );
 
   return idRef;
-};
+}

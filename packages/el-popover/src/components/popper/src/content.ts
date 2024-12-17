@@ -1,10 +1,10 @@
-import { type Options, type Placement, placements } from '@popperjs/core';
-import { useAriaProps } from 'el-popover/hooks';
-
-import type { PopperEffect } from './popper';
 import type { ExtractPropTypes, PropType, StyleValue } from 'vue';
 import type { Measurable } from './constants';
+
 import type Content from './content.vue';
+import type { PopperEffect } from './popper';
+import { type Options, type Placement, placements } from '@popperjs/core';
+import { useAriaProps } from 'el-popover/hooks';
 
 type ClassObjectType = Record<string, boolean>;
 type ClassType = string | ClassObjectType | ClassType[];

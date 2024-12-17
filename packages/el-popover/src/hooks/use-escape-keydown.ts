@@ -4,18 +4,20 @@ import { onBeforeUnmount, onMounted } from 'vue';
 
 let registeredEscapeHandlers: ((e: KeyboardEvent) => void)[] = [];
 
-const cachedHandler = (e: Event) => {
+function cachedHandler(e: Event) {
   const event = e as KeyboardEvent;
   if (event.key === EVENT_CODE.esc) {
     registeredEscapeHandlers.forEach(registeredHandler =>
       registeredHandler(event),
     );
   }
-};
+}
 
-export const useEscapeKeydown = (handler: (e: KeyboardEvent) => void) => {
+export function useEscapeKeydown(handler: (e: KeyboardEvent) => void) {
   onMounted(() => {
-    if (!isClient) return;
+    if (!isClient) {
+      return;
+    }
 
     if (registeredEscapeHandlers.length === 0) {
       document.addEventListener('keydown', cachedHandler);
@@ -24,7 +26,9 @@ export const useEscapeKeydown = (handler: (e: KeyboardEvent) => void) => {
   });
 
   onBeforeUnmount(() => {
-    if (!isClient) return;
+    if (!isClient) {
+      return;
+    }
 
     registeredEscapeHandlers = registeredEscapeHandlers.filter(
       registeredHandler => registeredHandler !== handler,
@@ -33,4 +37,4 @@ export const useEscapeKeydown = (handler: (e: KeyboardEvent) => void) => {
       document.removeEventListener('keydown', cachedHandler);
     }
   });
-};
+}

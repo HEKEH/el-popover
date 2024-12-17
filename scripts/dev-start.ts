@@ -1,5 +1,6 @@
-import { join } from 'path';
-import { LogColor, ProjectConfig, startProjects } from './utils';
+import type { ProjectConfig } from './utils';
+import { join } from 'node:path';
+import { LogColor, startProjects } from './utils';
 
 /** Projects start order */
 const projects: Array<ProjectConfig | Array<ProjectConfig>> = [

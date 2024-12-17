@@ -1,6 +1,6 @@
+import type { Arrayable } from 'el-popover/types';
 import type { ExtractPropTypes, PropType } from 'vue';
 import { popperTriggerProps } from 'el-popover/components/popper';
-import type { Arrayable } from 'el-popover/types';
 import { EVENT_CODE } from 'el-popover/constants';
 
 export type TooltipTriggerType = 'hover' | 'focus' | 'click' | 'contextmenu';

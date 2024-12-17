@@ -1,54 +1,10 @@
-<template>
-  <el-teleport :disabled="!teleported" :to="appendTo">
-    <transition
-      :name="transitionClass"
-      @after-leave="onTransitionLeave"
-      @before-enter="onBeforeEnter"
-      @after-enter="onAfterShow"
-      @before-leave="onBeforeLeave"
-    >
-      <el-popper-content
-        v-if="shouldRender"
-        v-show="shouldShow"
-        :id="id"
-        ref="contentRef"
-        v-bind="$attrs"
-        :aria-label="ariaLabel"
-        :aria-hidden="ariaHidden"
-        :boundaries-padding="boundariesPadding"
-        :fallback-placements="fallbackPlacements"
-        :gpu-acceleration="gpuAcceleration"
-        :offset="offset"
-        :placement="placement"
-        :popper-options="popperOptions"
-        :strategy="strategy"
-        :effect="effect"
-        :enterable="enterable"
-        :pure="pure"
-        :popper-class="popperClass"
-        :popper-style="[popperStyle, contentStyle]"
-        :reference-el="referenceEl"
-        :trigger-target-el="triggerTargetEl"
-        :visible="shouldShow"
-        :z-index="zIndex"
-        @mouseenter="onContentEnter"
-        @mouseleave="onContentLeave"
-        @blur="onBlur"
-        @close="onClose"
-      >
-        <slot />
-      </el-popper-content>
-    </transition>
-  </el-teleport>
-</template>
-
 <script lang="ts" setup>
-import { computed, inject, onBeforeUnmount, ref, unref, watch } from 'vue';
 import { onClickOutside } from '@vueuse/core';
-import { useNamespace, usePopperContainerId } from 'el-popover/hooks';
-import { composeEventHandlers } from 'el-popover/utils';
 import { ElPopperContent } from 'el-popover/components/popper';
 import ElTeleport from 'el-popover/components/teleport';
+import { useNamespace, usePopperContainerId } from 'el-popover/hooks';
+import { composeEventHandlers } from 'el-popover/utils';
+import { computed, inject, onBeforeUnmount, ref, unref, watch } from 'vue';
 import { TOOLTIP_INJECTION_KEY } from './constants';
 import { useTooltipContentProps } from './content';
 
@@ -108,14 +64,14 @@ const contentStyle = computed(() => (props.style ?? {}) as any);
 
 const ariaHidden = ref(true);
 
-const onTransitionLeave = () => {
+function onTransitionLeave() {
   onHide();
   ariaHidden.value = true;
-};
+}
 
-const stopWhenControlled = () => {
+function stopWhenControlled() {
   if (unref(controlled)) return true;
-};
+}
 
 const onContentEnter = composeEventHandlers(stopWhenControlled, () => {
   if (props.enterable && unref(trigger) === 'hover') {
@@ -129,16 +85,16 @@ const onContentLeave = composeEventHandlers(stopWhenControlled, () => {
   }
 });
 
-const onBeforeEnter = () => {
+function onBeforeEnter() {
   contentRef.value?.updatePopper?.();
   onBeforeShow?.();
-};
+}
 
-const onBeforeLeave = () => {
+function onBeforeLeave() {
   onBeforeHide?.();
-};
+}
 
-const onAfterShow = () => {
+function onAfterShow() {
   onShow();
   stopHandle = onClickOutside(
     computed(() => {
@@ -152,13 +108,13 @@ const onAfterShow = () => {
       }
     },
   );
-};
+}
 
-const onBlur = () => {
+function onBlur() {
   if (!props.virtualTriggering) {
     onClose();
   }
-};
+}
 
 watch(
   () => unref(open),
@@ -188,3 +144,47 @@ defineExpose({
   contentRef,
 });
 </script>
+
+<template>
+  <ElTeleport :disabled="!teleported" :to="appendTo">
+    <transition
+      :name="transitionClass"
+      @after-leave="onTransitionLeave"
+      @before-enter="onBeforeEnter"
+      @after-enter="onAfterShow"
+      @before-leave="onBeforeLeave"
+    >
+      <ElPopperContent
+        v-if="shouldRender"
+        v-show="shouldShow"
+        :id="id"
+        ref="contentRef"
+        v-bind="$attrs"
+        :aria-label="ariaLabel"
+        :aria-hidden="ariaHidden"
+        :boundaries-padding="boundariesPadding"
+        :fallback-placements="fallbackPlacements"
+        :gpu-acceleration="gpuAcceleration"
+        :offset="offset"
+        :placement="placement"
+        :popper-options="popperOptions"
+        :strategy="strategy"
+        :effect="effect"
+        :enterable="enterable"
+        :pure="pure"
+        :popper-class="popperClass"
+        :popper-style="[popperStyle, contentStyle]"
+        :reference-el="referenceEl"
+        :trigger-target-el="triggerTargetEl"
+        :visible="shouldShow"
+        :z-index="zIndex"
+        @mouseenter="onContentEnter"
+        @mouseleave="onContentLeave"
+        @blur="onBlur"
+        @close="onClose"
+      >
+        <slot />
+      </ElPopperContent>
+    </transition>
+  </ElTeleport>
+</template>

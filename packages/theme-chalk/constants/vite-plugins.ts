@@ -3,7 +3,7 @@ import themeConfig from './config';
 
 export function themeConfigPlugin(): Plugin {
   const virtualModuleId = 'virtual:theme-config';
-  const resolvedVirtualModuleId = '\0' + virtualModuleId;
+  const resolvedVirtualModuleId = `\0${virtualModuleId}`;
 
   return {
     name: 'ThemeChalkConfig',

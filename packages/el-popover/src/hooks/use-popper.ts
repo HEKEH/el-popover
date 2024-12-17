@@ -1,7 +1,3 @@
-import { computed, onBeforeUnmount, ref, shallowRef, unref, watch } from 'vue';
-import { createPopper } from '@popperjs/core';
-
-import type { Ref } from 'vue';
 import type {
   Instance,
   Modifier,
@@ -9,17 +5,21 @@ import type {
   State,
   VirtualElement,
 } from '@popperjs/core';
+import type { Ref } from 'vue';
+
+import { createPopper } from '@popperjs/core';
+import { computed, onBeforeUnmount, ref, shallowRef, unref, watch } from 'vue';
 import { keysOf } from '../utils';
 
 type ElementType = HTMLElement | undefined;
 type ReferenceElement = ElementType | VirtualElement;
 export type PartialOptions = Partial<Options>;
 
-export const usePopper = (
+export function usePopper(
   referenceElementRef: Ref<ReferenceElement>,
   popperElementRef: Ref<ElementType>,
   opts: Ref<PartialOptions> | PartialOptions = {} as PartialOptions,
-) => {
+) {
   const stateUpdater = {
     name: 'updateState',
     enabled: true,
@@ -27,6 +27,7 @@ export const usePopper = (
     fn: ({ state }) => {
       const derivedState = deriveState(state);
 
+      // eslint-disable-next-line ts/no-use-before-define
       Object.assign(states.value, derivedState);
     },
     requires: ['computeStyles'],
@@ -47,7 +48,6 @@ export const usePopper = (
     };
   });
 
-  const popperInstanceRef = shallowRef<Instance | undefined>();
   const states = ref<Pick<State, 'styles' | 'attributes'>>({
     styles: {
       popper: {
@@ -62,8 +62,12 @@ export const usePopper = (
     attributes: {},
   });
 
+  const popperInstanceRef = shallowRef<Instance | undefined>();
+
   const destroy = () => {
-    if (!popperInstanceRef.value) return;
+    if (!popperInstanceRef.value) {
+      return;
+    }
 
     popperInstanceRef.value.destroy();
     popperInstanceRef.value = undefined;
@@ -86,7 +90,9 @@ export const usePopper = (
     [referenceElementRef, popperElementRef],
     ([referenceElement, popperElement]) => {
       destroy();
-      if (!referenceElement || !popperElement) return;
+      if (!referenceElement || !popperElement) {
+        return;
+      }
 
       popperInstanceRef.value = createPopper(
         referenceElement,
@@ -109,7 +115,7 @@ export const usePopper = (
     // Preventing end users from modifying the instance.
     instanceRef: computed(() => unref(popperInstanceRef)),
   };
-};
+}
 
 function deriveState(state: State) {
   const elements = keysOf(state.elements);
