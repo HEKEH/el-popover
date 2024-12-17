@@ -24,7 +24,10 @@ export default defineConfig(({ mode }) => {
   const plugins = [
     vue() as PluginOption,
     vueJsx() as PluginOption,
-    cssInjectedByJsPlugin(),
+    cssInjectedByJsPlugin({
+      styleId: 'heheh-el-popover-style',
+      relativeCSSInjection: true, // for multiple format
+    }),
     themeConfigPlugin(),
   ];
   if (process.env.ENABLE_DTS !== 'false') {
