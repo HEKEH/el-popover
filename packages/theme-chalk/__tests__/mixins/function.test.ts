@@ -1,6 +1,6 @@
-import { debugSassString } from '../utils';
 import { describe, expect, it } from 'vitest';
 import themeConfig from '../../constants/config';
+import { debugSassString } from '../utils';
 
 describe('mixins/function', () => {
   const functionImport = '@use "mixins/function" as *;';

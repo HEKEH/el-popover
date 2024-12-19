@@ -1,11 +1,11 @@
-import { nextTick } from 'vue';
-import { mount } from '@vue/test-utils';
-import { afterEach, describe, expect, it, vi } from 'vitest';
-import Tooltip from '../src/tooltip.vue';
-
 import type { VNode } from 'vue';
+import { mount } from '@vue/test-utils';
 import { ElPopperTrigger } from 'el-popover/components/popper';
 import { rAF } from 'el-popover/test-utils/tick';
+
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { nextTick } from 'vue';
+import Tooltip from '../src/tooltip.vue';
 
 vi.mock('el-popover/utils/error', () => ({
   debugWarn: vi.fn(),
@@ -48,7 +48,7 @@ describe('<ElTooltip />', () => {
       wrapper = createComponent({ appendTo: '#test' }, 'test appendTo props');
       await nextTick();
       const trigger$ = findTrigger();
-      const triggerEl = trigger$.find('.el-tooltip__trigger');
+      const triggerEl = trigger$.find('.ep-tooltip__trigger');
       await triggerEl.trigger('mouseenter');
       expect(document.querySelector('#test')?.innerHTML).toContain(
         'test appendTo props',
@@ -73,7 +73,7 @@ describe('<ElTooltip />', () => {
       await nextTick();
 
       const trigger$ = findTrigger();
-      const triggerEl = trigger$.find('.el-tooltip__trigger');
+      const triggerEl = trigger$.find('.ep-tooltip__trigger');
 
       vi.useFakeTimers();
       await triggerEl.trigger('mouseenter');
@@ -102,7 +102,7 @@ describe('<ElTooltip />', () => {
       await nextTick();
 
       const trigger$ = findTrigger();
-      const triggerEl = trigger$.find('.el-tooltip__trigger');
+      const triggerEl = trigger$.find('.ep-tooltip__trigger');
 
       vi.useFakeTimers();
       await triggerEl.trigger('click');

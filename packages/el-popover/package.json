@@ -1,6 +1,6 @@
 {
   "name": "@hekeh/el-popover",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A popover component extracted from element-plus",
   "license": "MIT",
   "homepage": "https://www.npmjs.com/package/@hekeh/el-popover",

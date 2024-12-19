@@ -14,6 +14,14 @@ import { ElTooltip } from '@hekeh/el-popover';
         </template>
         <button class="demo-button">Hover to see tooltip</button>
       </ElTooltip>
+      <ElTooltip placement="top" effect="dark">
+        <template #content>
+          <div class="tooltip-content">
+            <span>✨</span> This is a tooltip message
+          </div>
+        </template>
+        <button class="demo-button">Dark Effect</button>
+      </ElTooltip>
       <ElTooltip placement="top" effect="light" trigger="click">
         <template #content>
           <div class="tooltip-content">

@@ -12,6 +12,12 @@ import { ElPopover } from '@hekeh/el-popover';
           <button class="demo-button">Hover to see popover</button>
         </template>
       </ElPopover>
+      <ElPopover placement="top" effect="dark">
+        <div class="popover-content">This is popover content</div>
+        <template #reference>
+          <button class="demo-button">Dark Effect</button>
+        </template>
+      </ElPopover>
 
       <ElPopover placement="top" effect="light" trigger="click">
         <div class="popover-content">This is popover content</div>
